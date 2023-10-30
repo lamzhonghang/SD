@@ -14,12 +14,16 @@ class designModel: ObservableObject {
     @Published var centerTopicWidth: Double = 170
     @Published var topicMaxWidth: Double = 300
     @Published var isDarkMode: Bool = false
+    @Published var selectStyleIndex: Int = 0
     @Published var showBulletPoint: Bool = false
+    @Published var isSerif: Bool = false
+    @Published var isSans: Bool = false
+    @Published var isRounded: Bool = false
     @Published var isRadial: Bool = false{
         didSet{
             if isRadial{
-               topicRadius = 200
-            topicFontSize = 1
+                topicRadius = 200
+                topicFontSize = 1
             } else{
                 topicRadius = 12
             }
@@ -28,8 +32,6 @@ class designModel: ObservableObject {
     @Published var isTimeLine: Bool = false{
         didSet{
             if isTimeLine{
-                isTreeChart = false
-                isOutline = false
                 isFill = true
                 topicPadding = 12
             }
@@ -38,7 +40,6 @@ class designModel: ObservableObject {
     @Published var isOutline: Bool = false{
         didSet{
             if isOutline{
-                isTreeChart = true
                 showBulletPoint = true
                 topicPadding = 2
                 isFill = false
@@ -59,9 +60,9 @@ class designModel: ObservableObject {
         }
     }
     @Published var topicColor: Color = Color(UIColor.systemGray5)
-    @Published var isBentoStyle: Bool = false {
+    @Published var isBento: Bool = false {
         didSet {
-            if isBentoStyle {
+            if isBento {
                 gridHorSpacing = 8
                 gridVerSpacing = 8
                 topicRadius = 12
@@ -96,7 +97,7 @@ class designModel: ObservableObject {
     @Published var topicRadius: Double = 8
     @Published var topicFontSize: Double = 0
     @Published var branchOpacity: Double = 0.3
-    @Published var gridHorSpacing: Double = 8
+    @Published var gridHorSpacing: Double
     @Published var gridVerSpacing: Double = 8
     @Published var topicHeight: CGFloat = 0.0
     @Published var isGrid: Bool = false {
@@ -128,38 +129,13 @@ class designModel: ObservableObject {
                 topicPadding = 20
                 isFill = true
             } else {
-                    isGrid = true
+                isGrid = true
             }
         }
     }
-    //    @Published var topicFontFamily: Font.Design = .default
-    //    @Published var topicFontFamilySelection: FontDesign = .defaultDesign
-    func resetToInitialValues() {
-         topicPadding = 12
-         topicMaxWidth = 300
-         isDarkMode = false
-         showBulletPoint = false
-         isTimeLine = false
-         isOutline = false
-         isLeftAlign = false
-         isTreeChart = false
-         topicColor = Color(UIColor.systemGray5)
-         isBentoStyle = false
-         isBorder = false
-         isFill = true
-         isBranch = true
-         isPadding = true
-         isFilledHeight = false
-         isFilledWidth = false
-         topicRadius = 8
-         topicFontSize = 0
-         branchOpacity = 0.3
-         gridHorSpacing = 8
-         gridVerSpacing = 8
-         topicHeight = 0.0
-         isGrid = false
-         isTreeTable = false
-     }
+    init() {
+        self.gridHorSpacing = UserDefaults.standard.object(forKey: "showWord") as? Double ?? 8
+    }
 }
 
 enum FontDesign: String, CaseIterable, Identifiable {
@@ -191,25 +167,30 @@ struct MainTopicModifier: ViewModifier {
             }
             content
         }
-            .font(.system(size: 16 + dm.topicFontSize))
-            .contentTransition(.numericText())
-            .padding(dm.isPadding ? dm.topicPadding : 0)
-            .frame(maxHeight: dm.isFilledHeight ? .infinity : .none)
-            .frame(maxWidth: dm.isFilledWidth ? .infinity : .none, alignment: .leading)
-            .padding(2)
-            .background(
-                RoundedRectangle(cornerRadius: dm.topicRadius)
-                    .stroke(dm.isBorder ? Color(UIColor.systemGray3) : .clear, lineWidth: 2)
-            )
-            .frame(width: dm.isRadial ? dm.mainTopicWidth : .none, height: dm.isRadial ?  dm.mainTopicWidth : .none)
-            .background(dm.isFill ?  dm.topicColor.opacity(0.7) : .clear)
-            .cornerRadius(dm.topicRadius)
-            .monospacedDigit()
-            .padding(.leading, dm.isTreeChart ? 20 : 0)
-            .bold()
-           
+        .font(.system(size: 16 + dm.topicFontSize))
+        .contentTransition(.numericText())
+        .padding(dm.isPadding ? dm.topicPadding : 0)
+        .frame(maxHeight: dm.isFilledHeight ? .infinity : .none)
+        .frame(maxWidth: dm.isFilledWidth ? .infinity : .none, alignment: .leading)
+        .padding(2)
+        .background(
+            RoundedRectangle(cornerRadius: dm.topicRadius)
+                .stroke(dm.isBorder ? Color(UIColor.systemGray3) : .clear, lineWidth: 2)
+        )
+        .frame(width: dm.isRadial ? dm.mainTopicWidth : .none, height: dm.isRadial ?  dm.mainTopicWidth : .none)
+        .background(dm.isFill ?  dm.topicColor.opacity(0.7) : .clear)
+        .cornerRadius(dm.topicRadius)
+        .monospacedDigit()
+        .padding(.leading, dm.isTreeChart ? 20 : 0)
+        .bold()
+        .fontDesign(dm.isSerif ? .serif : .default)
+        //            .fontDesign(dm.isDefault ? .default : .serif)
+        .fontDesign(dm.isRounded ? .serif : .monospaced)
     }
 }
+
+
+
 
 struct SubTopicModifier: ViewModifier {
     @ObservedObject var dm = designModel()
@@ -226,7 +207,7 @@ struct SubTopicModifier: ViewModifier {
         .frame(maxHeight: dm.isFilledHeight ? .infinity : .none)
         .frame(maxWidth: dm.isFilledWidth ? .infinity : .none, alignment: .leading)
         .padding(2)
-//        .frame(width: dm.isGrid && dm.isBentoStyle ? 0 : 130)
+        //        .frame(width: dm.isGrid && dm.isBentoStyle ? 0 : 130)
         .background(
             RoundedRectangle(cornerRadius: dm.topicRadius)
                 .stroke(dm.isBorder ? Color(UIColor.systemGray3) : .clear, lineWidth: 2)
@@ -236,6 +217,9 @@ struct SubTopicModifier: ViewModifier {
         .cornerRadius(dm.topicRadius)
         .monospacedDigit()
         .padding(.leading, dm.isTreeChart ? 40 : 0)
+        .fontDesign(dm.isSerif ? .serif : .default)
+        //        .fontDesign(dm.isDefault ? .default : .serif)
+        .fontDesign(dm.isRounded ? .rounded : .default)
     }
 }
 
@@ -249,21 +233,37 @@ struct CentralTopicModifier: ViewModifier {
             }
             content
         }
-     
-            .font(.system(size: 16 + dm.topicFontSize * 2))
-            .padding(dm.isPadding ? dm.topicPadding : 0)
-            .frame(maxHeight: dm.isFilledHeight ? .infinity : .none)
-            .frame(maxWidth: dm.isFilledWidth ? .infinity : .none, alignment: .leading)
-            .padding(2)
-            .background(
-                RoundedRectangle(cornerRadius: dm.topicRadius)
-                    .stroke(dm.isBorder ? Color(UIColor.systemGray3) : .clear, lineWidth: 2)
-            )
-            .frame(width: dm.isRadial ? dm.centerTopicWidth : .none, height: dm.isRadial ?  dm.centerTopicWidth : .none)
-            .background(dm.isFill ? dm.topicColor : .clear)
-            .cornerRadius(dm.topicRadius)
-            .monospacedDigit()
-            .bold()
+        
+        .font(.system(size: 16 + dm.topicFontSize * 2))
+        .padding(dm.isPadding ? dm.topicPadding : 0)
+        .frame(maxHeight: dm.isFilledHeight ? .infinity : .none)
+        .frame(maxWidth: dm.isFilledWidth ? .infinity : .none, alignment: .leading)
+        .padding(2)
+        .background(
+            RoundedRectangle(cornerRadius: dm.topicRadius)
+                .stroke(dm.isBorder ? Color(UIColor.systemGray3) : .clear, lineWidth: 2)
+        )
+        .frame(width: dm.isRadial ? dm.centerTopicWidth : .none, height: dm.isRadial ?  dm.centerTopicWidth : .none)
+        .background(dm.isFill ? dm.topicColor : .clear)
+        .cornerRadius(dm.topicRadius)
+        .monospacedDigit()
+        .bold()
+        .fontDesign(dm.isSerif ? .serif : .default)
+        //            .fontDesign(dm.isDefault ? .default : .serif)
+        .fontDesign(dm.isRounded ? .rounded : .default)
+    }
+}
+
+
+struct PanelTextModifier: ViewModifier {
+    @ObservedObject var dm = designModel()
+    
+    func body(content: Content) -> some View {
+        content
+            .font(.subheadline)
+            .padding(.horizontal, 8)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding()
     }
 }
 
@@ -280,5 +280,13 @@ extension View {
     
     func centralTopic(dm: designModel) -> some View {
         self.modifier(CentralTopicModifier(dm: dm))
+    }
+    
+    func panelText(dm: designModel) -> some View {
+        self.modifier(PanelTextModifier(dm: dm))
+    }
+    
+    func BTitle() -> some View {
+        self.modifier(BTitleModifier())
     }
 }

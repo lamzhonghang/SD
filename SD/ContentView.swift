@@ -15,7 +15,7 @@ struct ContentView: View {
     var body: some View {
         NavigationSplitView {
             DetailCtrlView(dm: dm)
-                .navigationSplitViewColumnWidth(320)
+                .navigationSplitViewColumnWidth(1000)
                 .navigationTitle("Format")
                 .navigationBarTitleDisplayMode(.inline)
         } detail: {

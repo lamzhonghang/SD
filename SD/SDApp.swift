@@ -6,12 +6,19 @@
 //
 
 import SwiftUI
+import TipKit
 
 @main
 struct SDApp: App {
+    @State private var isPhone = UIDevice.current.userInterfaceIdiom == .phone
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            if isPhone{
+                Paywall_Entry()
+            } else{
+                ContentView()
+            }
         }
     }
 }
