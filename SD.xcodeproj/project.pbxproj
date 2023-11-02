@@ -36,6 +36,9 @@
 		3FB178802ADFBF0B002F1A38 /* DetailCtrlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB1787F2ADFBF0B002F1A38 /* DetailCtrlView.swift */; };
 		3FB178822ADFBF49002F1A38 /* DesignModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB178812ADFBF49002F1A38 /* DesignModel.swift */; };
 		3FB178842ADFC64A002F1A38 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB178832ADFC64A002F1A38 /* Extension.swift */; };
+		3FDBB3DE2AF38ACD00FA3314 /* gitfboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FDBB3DD2AF38ACD00FA3314 /* gitfboxView.swift */; };
+		3FEAFCBF2AF0DAD800C9ED3F /* Paywall_B_3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEAFCBE2AF0DAD800C9ED3F /* Paywall_B_3.swift */; };
+		3FEAFCDF2AF1ECFA00C9ED3F /* Paywall_C_2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEAFCDE2AF1ECFA00C9ED3F /* Paywall_C_2.swift */; };
 		3FF1B3802AE2434500C88054 /* RadialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF1B37F2AE2434500C88054 /* RadialView.swift */; };
 		3FF1B3822AE386F200C88054 /* Paywall_A_3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF1B3812AE386F200C88054 /* Paywall_A_3.swift */; };
 		3FF1B3842AE392CD00C88054 /* CoreMotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF1B3832AE392CD00C88054 /* CoreMotion.swift */; };
@@ -72,6 +75,9 @@
 		3FB1787F2ADFBF0B002F1A38 /* DetailCtrlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCtrlView.swift; sourceTree = "<group>"; };
 		3FB178812ADFBF49002F1A38 /* DesignModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignModel.swift; sourceTree = "<group>"; };
 		3FB178832ADFC64A002F1A38 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		3FDBB3DD2AF38ACD00FA3314 /* gitfboxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gitfboxView.swift; sourceTree = "<group>"; };
+		3FEAFCBE2AF0DAD800C9ED3F /* Paywall_B_3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paywall_B_3.swift; sourceTree = "<group>"; };
+		3FEAFCDE2AF1ECFA00C9ED3F /* Paywall_C_2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paywall_C_2.swift; sourceTree = "<group>"; };
 		3FF1B37F2AE2434500C88054 /* RadialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadialView.swift; sourceTree = "<group>"; };
 		3FF1B3812AE386F200C88054 /* Paywall_A_3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paywall_A_3.swift; sourceTree = "<group>"; };
 		3FF1B3832AE392CD00C88054 /* CoreMotion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreMotion.swift; sourceTree = "<group>"; };
@@ -93,6 +99,7 @@
 			children = (
 				3F8EACAA2AE8BD6B000E35F7 /* Paywall_B_1.swift */,
 				3F34ED372AED2D2C0042C810 /* Paywall_B_2.swift */,
+				3FEAFCBE2AF0DAD800C9ED3F /* Paywall_B_3.swift */,
 				3F34ED352AED2B520042C810 /* BFooter.swift */,
 				3F34ED332AED2B0E0042C810 /* FeatureListView.swift */,
 				3F34ED392AED33DE0042C810 /* BbannerView.swift */,
@@ -137,6 +144,8 @@
 				3FB178832ADFC64A002F1A38 /* Extension.swift */,
 				3FA761922AE60B6E00AD6817 /* Paywall_Entry.swift */,
 				3FA761902AE4E01D00AD6817 /* Paywall_C_1.swift */,
+				3FEAFCDE2AF1ECFA00C9ED3F /* Paywall_C_2.swift */,
+				3FDBB3DD2AF38ACD00FA3314 /* gitfboxView.swift */,
 				3F07F78B2AEB6C880090C8C0 /* Paywall_B_1 */,
 				3F8EACA82AE7D487000E35F7 /* Paywall_boarding.swift */,
 				3FF1B3812AE386F200C88054 /* Paywall_A_3.swift */,
@@ -240,6 +249,8 @@
 				3F07F78D2AEB7A4E0090C8C0 /* UserComment.swift in Sources */,
 				3F34ED362AED2B520042C810 /* BFooter.swift in Sources */,
 				3F5AC49F2AE0ECE400B7B384 /* GridView.swift in Sources */,
+				3FDBB3DE2AF38ACD00FA3314 /* gitfboxView.swift in Sources */,
+				3FEAFCBF2AF0DAD800C9ED3F /* Paywall_B_3.swift in Sources */,
 				3F34ED342AED2B0E0042C810 /* FeatureListView.swift in Sources */,
 				3FA761932AE60B6E00AD6817 /* Paywall_Entry.swift in Sources */,
 				3F5AC4A12AE0ECFE00B7B384 /* TreeView.swift in Sources */,
@@ -253,6 +264,7 @@
 				3F07F7882AEB6C3A0090C8C0 /* awardCombine.swift in Sources */,
 				3F34ED382AED2D2C0042C810 /* Paywall_B_2.swift in Sources */,
 				3F54D6D22AE798D10068B137 /* PurchaseFeedbackView.swift in Sources */,
+				3FEAFCDF2AF1ECFA00C9ED3F /* Paywall_C_2.swift in Sources */,
 				3FF1B3802AE2434500C88054 /* RadialView.swift in Sources */,
 				3F7BF9882AEA9B2000ECF064 /* ComparePlanView.swift in Sources */,
 				3F07F78A2AEB6C730090C8C0 /* FAQ.swift in Sources */,

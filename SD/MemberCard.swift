@@ -10,15 +10,20 @@ import CoreMotion
 
 struct MemberCard: View {
     @StateObject private var motion = MotionManager()
+//    let shouldApplyShadow = fabs(motion.y) <= 0.1
     let date = Date()
     
     var body: some View {
         ZStack{
             RoundedRectangle(cornerRadius: 12)
                 .fill(
-                    LinearGradient(gradient: Gradient(colors: [Color(hex: 0x6C69FF),Color(hex: 0xFF3737)]), startPoint: .topLeading, endPoint: .bottomTrailing)
+                    LinearGradient(gradient: Gradient(colors: [Color(hex: 0xFF3737),Color(hex: 0xFF3737)]), startPoint: .topLeading, endPoint: .bottomTrailing)
                 )
-                .shadow(color: .blue.opacity(0.9), radius: motion.x <= 0.1 ? 0 : 20, x: motion.x, y: motion.y)
+                .shadow(color: Color(hex: 0xFF3737).opacity(0.9), radius: fabs(motion.x) <= 0.1 ? 0 : 2, x: motion.x * 2, y: motion.y * 2)
+                .shadow(color: Color(hex: 0xFF3737).opacity(0.6), radius: fabs(motion.x) <= 0.1 ? 0 : 6, x: motion.x * 6, y: motion.y * 6)
+                .shadow(color: Color(hex: 0xFF3737).opacity(0.3), radius: fabs(motion.x) <= 0.1 ? 0 : 12, x: motion.x * 12, y: motion.y * 12)
+                .shadow(color: Color(hex: 0xFF3737).opacity(0.2), radius: fabs(motion.x) <= 0.1 ? 0 : 24, x: motion.x * 24, y: motion.y * 24)
+                .scaleEffect(0.9)
             
             VStack(alignment: .leading,spacing: 6){
                 Text("Baby Blue")
@@ -33,8 +38,8 @@ struct MemberCard: View {
             //            .background(Color(UIColor.secondarySystemBackground))
             .background(.background)
             .cornerRadius(12)
-            .rotation3DEffect(.degrees(motion.x * 12), axis: (x: 0, y: 1, z: 0))
-            .rotation3DEffect(.degrees(motion.y * 12 - 12), axis: (x: -1, y: 0, z: 0))
+            .rotation3DEffect(.degrees(motion.x * 82), axis: (x: 0, y: 1, z: 0))
+            .rotation3DEffect(.degrees(motion.y * 42 - 42), axis: (x: -1, y: 0, z: 0))
             
             //            .backgroundStyle(
             //                .blue.gradient.shadow(
@@ -44,6 +49,7 @@ struct MemberCard: View {
         }
         .padding(50)
         .padding(.vertical, 100)
+        .drawingGroup()
     }
 }
 

@@ -46,6 +46,7 @@ struct Paywall_C_1: View {
                         }label:{
                             Image(systemName: "xmark.circle.fill")
                                 .imageScale(.large)
+                                .font(.subheadline)
                                 .symbolRenderingMode(.hierarchical)
                                 .foregroundColor(.secondary)
                         }

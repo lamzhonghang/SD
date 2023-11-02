@@ -43,6 +43,7 @@ struct Paywall_Entry: View {
     
     @State private var showB1 = false
     @State private var showB2 = false
+    @State private var showB3 = false
     
     @State private var showC1 = false
     
@@ -59,15 +60,14 @@ struct Paywall_Entry: View {
     var body: some View {
         NavigationStack{
             Form{
-                
                 Section{
                     Button{
                         showCard.toggle()
                     }label: {
-                        Paywall_Button(title: "Member Card", subtitle: "Member Card", text: "")
+                        Paywall_Button(title: "还没做完", subtitle: "Member Card", text: "")
                     }
                 } footer:{
-                    Text("展示具体的特性和清晰的订阅信息，用户快速获取品牌和功能的介绍。")
+                    Text("用户查看订阅信息的页面")
                 }
                 
                 Section{
@@ -122,6 +122,16 @@ struct Paywall_Entry: View {
                 
                 Section{
                     Button{
+                        showB3.toggle()
+                    }label: {
+                        Paywall_Button(title: "Paywall_B_3", subtitle: "Landing 2", text: "")
+                    }
+                } footer:{
+                    Text("这也是落地页版本，相对于方案1可以在底部时时刻刻看到订阅的价格和选择，这个方案把这个订阅放在视觉的核心位置。")
+                }
+                
+                Section{
+                    Button{
                         showC1.toggle()
                     }label: {
                         Paywall_Button(title: "Paywall_C_1", subtitle: "Offer", text: "")
@@ -158,6 +168,10 @@ struct Paywall_Entry: View {
             })
             .fullScreenCover(isPresented: $showB2, content: {
                 Paywall_B_2()
+                
+            })
+            .fullScreenCover(isPresented: $showB3, content: {
+                Paywall_B_3()
                 
             })
             .fullScreenCover(isPresented: $showCard, content: {

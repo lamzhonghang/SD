@@ -16,11 +16,14 @@ class MotionManager: ObservableObject {
     @Published var y = 0.0
 
     init() {
-        motionManager.deviceMotionUpdateInterval = 1 / 15
-        motionManager.startDeviceMotionUpdates(to: .main) { [weak self] data, _ in
-            guard let motion = data?.attitude else { return }
-            self?.x = motion.roll
-            self?.y = motion.pitch
+        
+            motionManager.deviceMotionUpdateInterval = 1 / 15
+            motionManager.startDeviceMotionUpdates(to: .main) { [weak self] data, _ in
+                withAnimation(){
+                guard let motion = data?.attitude else { return }
+                self?.x = motion.roll
+                self?.y = motion.pitch
+            }
         }
     }
 }
