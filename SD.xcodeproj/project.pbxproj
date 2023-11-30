@@ -20,6 +20,8 @@
 		3F449B292B170F9E00453C59 /* LayoutPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F449B282B170F9E00453C59 /* LayoutPickerView.swift */; };
 		3F449B2B2B17107300453C59 /* RadiusCtrlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F449B2A2B17107300453C59 /* RadiusCtrlView.swift */; };
 		3F449B2D2B17182D00453C59 /* GetHeightExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F449B2C2B17182D00453C59 /* GetHeightExtension.swift */; };
+		3F48CD932B186E250037D314 /* fontCtrlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F48CD922B186E250037D314 /* fontCtrlView.swift */; };
+		3F48CD952B187E580037D314 /* PaddingCtrlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F48CD942B187E580037D314 /* PaddingCtrlView.swift */; };
 		3F54D6D22AE798D10068B137 /* PurchaseFeedbackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F54D6D12AE798D10068B137 /* PurchaseFeedbackView.swift */; };
 		3F5AC49F2AE0ECE400B7B384 /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5AC49E2AE0ECE400B7B384 /* GridView.swift */; };
 		3F5AC4A12AE0ECFE00B7B384 /* TreeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5AC4A02AE0ECFE00B7B384 /* TreeView.swift */; };
@@ -68,6 +70,8 @@
 		3F449B282B170F9E00453C59 /* LayoutPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutPickerView.swift; sourceTree = "<group>"; };
 		3F449B2A2B17107300453C59 /* RadiusCtrlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadiusCtrlView.swift; sourceTree = "<group>"; };
 		3F449B2C2B17182D00453C59 /* GetHeightExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetHeightExtension.swift; sourceTree = "<group>"; };
+		3F48CD922B186E250037D314 /* fontCtrlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fontCtrlView.swift; sourceTree = "<group>"; };
+		3F48CD942B187E580037D314 /* PaddingCtrlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingCtrlView.swift; sourceTree = "<group>"; };
 		3F54D6D12AE798D10068B137 /* PurchaseFeedbackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseFeedbackView.swift; sourceTree = "<group>"; };
 		3F5AC49E2AE0ECE400B7B384 /* GridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
 		3F5AC4A02AE0ECFE00B7B384 /* TreeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeView.swift; sourceTree = "<group>"; };
@@ -170,9 +174,11 @@
 			children = (
 				3F91549E2B173570008F8676 /* BranchCtrlView.swift */,
 				3F449B2A2B17107300453C59 /* RadiusCtrlView.swift */,
+				3F48CD942B187E580037D314 /* PaddingCtrlView.swift */,
 				3F8C55232B15CEDF00B73622 /* GapCtrlView.swift */,
 				3F449B282B170F9E00453C59 /* LayoutPickerView.swift */,
 				3F8C55212B15CAFA00B73622 /* FontPicker.swift */,
+				3F48CD922B186E250037D314 /* fontCtrlView.swift */,
 			);
 			path = DetailCtrl;
 			sourceTree = "<group>";
@@ -322,6 +328,7 @@
 				3F91549F2B173570008F8676 /* BranchCtrlView.swift in Sources */,
 				3F07F78D2AEB7A4E0090C8C0 /* UserComment.swift in Sources */,
 				3F8C55242B15CEDF00B73622 /* GapCtrlView.swift in Sources */,
+				3F48CD952B187E580037D314 /* PaddingCtrlView.swift in Sources */,
 				3F34ED362AED2B520042C810 /* BFooter.swift in Sources */,
 				3F5AC49F2AE0ECE400B7B384 /* GridView.swift in Sources */,
 				3F6563D52AF9E5DE0047DAA3 /* GlowingButtonView.swift in Sources */,
@@ -348,6 +355,7 @@
 				3F3C01892AF8B52C00414ACE /* BFEntry.swift in Sources */,
 				3F7BF9882AEA9B2000ECF064 /* ComparePlanView.swift in Sources */,
 				3F07F78A2AEB6C730090C8C0 /* FAQ.swift in Sources */,
+				3F48CD932B186E250037D314 /* fontCtrlView.swift in Sources */,
 				3F5AC4A52AE0F37400B7B384 /* TimelineView.swift in Sources */,
 				3FF1B3842AE392CD00C88054 /* CoreMotion.swift in Sources */,
 				3F8EACAB2AE8BD6B000E35F7 /* Paywall_B_1.swift in Sources */,

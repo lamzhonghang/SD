@@ -22,8 +22,17 @@ struct DetailCtrlView: View {
                 }
                 .padding()
                 VStack {
-                    AlignmentPickerView(dm: dm)
+                    Divider()
+                    Text("Font")
+                        .panelText(dm: dm)
+                    FontPickerView(dm: dm)
+                    fontCtrlView(dm: dm)
+                    Divider()
+                    Text("Gap")
+                        .panelText(dm: dm)
                     GapCtrlView(dm: dm)
+                    PaddingCtrlView(dm: dm)
+                    Divider()
                     RadiusCtrlView(dm: dm)
                     BranchCtrlView(dm: dm)
 
@@ -37,7 +46,7 @@ struct DetailCtrlView: View {
                         Toggle(isOn: $dm.isBranch.animation(.bouncy(extraBounce: -0.1))) {
                             Text("Branch")
                         }
-                        
+
                         Toggle(isOn: $dm.isFilledHeight.animation(.bouncy(extraBounce: -0.1))) {
                             Text("Fill Container Height")
                         }
@@ -47,18 +56,18 @@ struct DetailCtrlView: View {
                         Toggle(isOn: $dm.isPadding.animation(.bouncy(extraBounce: -0.1))) {
                             Text("Padding")
                         }
-                        if dm.isPadding {
-                            Stepper(
-                                value: $dm.topicPadding.animation(.bouncy),
-                                in: 0...18,
-                                step: 6
-                            ) {
-                                Text("Padding: \(Int(dm.SubTopicHeight))")
-                            }
-                        }
+//                        if dm.isPadding {
+//                            Stepper(
+//                                value: $dm.topicPadding.animation(.bouncy),
+//                                in: 0...18,
+//                                step: 6
+//                            ) {
+//                                Text("Padding: \(Int(dm.SubTopicHeight))")
+//                            }
+//                        }
                         Stepper(
                             value: $dm.topicFontSize.animation(.bouncy),
-                            in: 0...4,
+                            in: 0 ... 4,
                             step: 2
                         ) {
                             Text("Font Contrast: \(Int(dm.topicFontSize / 2))")

@@ -29,27 +29,29 @@ struct GridView: View {
     let namespace: Namespace.ID
 
     var body: some View {
-        HStack {
+        HStack(spacing: dm.gridHorSpacing) {
             Text(sd.sdCenter)
                 .centralTopic(dm: dm)
                 .matchedGeometryEffect(id: "center", in: namespace)
             if dm.isBranch {
                 bracketView(dm: dm)
+                    
             }
-            VStack {
-                ForEach(1 ... 3, id: \.self) { number in
-                    HStack {
-                        Text("Main topic \(number)")
+            VStack(spacing: dm.gridVerSpacing) {
+                ForEach(1 ... 3, id: \.self) { number2 in
+                    HStack(spacing: dm.gridHorSpacing) {
+                        Text("Main topic \(number2)")
                             .mainTopic(dm: dm)
-                            .matchedGeometryEffect(id: "Main\(number)", in: namespace)
+                            .matchedGeometryEffect(id: "Main\(number2)", in: namespace)
                         if dm.isBranch {
-                            secondaryBracketView(dm: dm, namespace: namespace)
-                                .matchedGeometryEffect(id: "branchCenter\(number)", in: namespace)
+                            secondaryBracketView(dm: dm)
+                                .matchedGeometryEffect(id: "branchCenter\(number2)", in: namespace)
+//                                .opacity(dm.branchOpacity)
                         }
-                        VStack {
+                        VStack(spacing: dm.gridVerSpacing) {
                             ForEach(1 ... 3, id: \.self) { number in
                                 Text("Subtopic \(number)")
-                                    .matchedGeometryEffect(id: "Sub2_\(number)", in: namespace)
+                                    .matchedGeometryEffect(id: "Sub\(number2)_\(number)", in: namespace)
                                     .subTopic(dm: dm)
                                     .modifier(GetHeightModifier(height: $dm.SubTopicHeight))
                             }

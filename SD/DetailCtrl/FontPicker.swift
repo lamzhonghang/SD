@@ -27,7 +27,7 @@ enum FontDesignOption: String, CaseIterable {
     }
 }
 
-struct AlignmentPickerView: View {
+struct FontPickerView: View {
     @ObservedObject var dm = designModel()
 
     var body: some View {

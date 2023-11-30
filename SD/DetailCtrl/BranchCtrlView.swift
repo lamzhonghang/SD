@@ -29,7 +29,7 @@ struct BranchCtrlView: View {
                 Text("Branch Width")
                 Slider(
                     value: $dm.branchWidth,
-                    in: 5 ... 30,
+                    in: 1 ... 30,
                     onEditingChanged: { editing in
                         dm.isEditing = editing
                     }
@@ -49,20 +49,20 @@ struct BranchCtrlView: View {
                 TextField("", value: $dm.branchStroke, formatter: numberFormatter)
                     .customInput()
             }
-            if dm.isBranch {
-                HStack {
-                    Text("Opacity")
-                    Slider(
-                        value: $dm.branchOpacity,
-                        in: 0 ... 1,
-                        onEditingChanged: { editing in
-                            dm.isEditing = editing
-                        }
-                    )
-                    TextField("", value: $dm.branchOpacity, formatter: numberFormatter2)
-                        .customInput()
-                }
-            }
+//            if dm.isBranch {
+//                HStack {
+//                    Text("Opacity")
+//                    Slider(
+//                        value: $dm.branchOpacity,
+//                        in: 0 ... 1,
+//                        onEditingChanged: { editing in
+//                            dm.isEditing = editing
+//                        }
+//                    )
+//                    TextField("", value: $dm.branchOpacity, formatter: numberFormatter2)
+//                        .customInput()
+//                }
+//            }
             Toggle("Branch End in the Middle of Topic", isOn: $dm.branchCenterToTopic.animation(.bouncy))
         }
     }

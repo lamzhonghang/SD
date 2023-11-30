@@ -8,32 +8,70 @@
 import SwiftUI
 
 class designModel: ObservableObject {
+   
+    @Published var topicRadius: Double = 8
+    var selectRadiusIndex : RadiusOption = .medium{
+        didSet{
+            switch selectRadiusIndex {
+            case .small:
+                topicRadius = 0
+            case .medium:
+                topicRadius = 8
+            case .large:
+                topicRadius = 100
+            }
+        }
+    }
+    
+    //Padding
     @Published var topicPadding: Double = 12
+    var selectPaddingIndex: PaddingOption = .medium {
+           didSet {
+               switch selectPaddingIndex {
+               case .large:
+                   topicPadding = 20
+               case .medium:
+                   topicPadding = 12
+               case .small:
+                   topicPadding = 6
+               }
+           }
+       }
+    @Published var topicHorPadding: Double = 4
+    
+    
+    
+    
+    @Published var isDarkMode: Bool = false
+    @Published var selectStyleIndex: Int = 0
+    @Published var showBulletPoint: Bool = false
+    @Published var isEditing = false
+    
+    //branch
+    @Published var branchWidth: Double = 8
+    @Published var branchStroke: Double = 2
+
+    //font
+    @Published var subFontSize: Double = 12
+    @Published var centralFontSize: Double = 12
+    @Published var topicFontSize: Double = 12
+    @Published var fontSizeFactor: Double = 0
+    @Published var selectFontIndex: FontDesignOption = .serif
+
+    //Topic Width & Height
+    @Published var MainTopicHeight: CGFloat = 0.0
+    @Published var SubTopicHeight: CGFloat = 0.0
     @Published var subTopicWidth: Double = 110
     @Published var mainTopicWidth: Double = 130
     @Published var centerTopicWidth: Double = 170
     @Published var topicMaxWidth: Double = 300
-    @Published var isDarkMode: Bool = false
-    @Published var selectStyleIndex: Int = 0
-    @Published var showBulletPoint: Bool = false
-    @Published var isSerif: Bool = false
-    @Published var isSans: Bool = false
-    @Published var isRounded: Bool = false
-    @Published var selectFontIndex: FontDesignOption = .serif
-    @Published var isEditing = false
-    @Published var branchWidth: Double = 8
-    @Published var branchStroke: Double = 2
-
-    @Published var MainTopicHeight: CGFloat = 0.0
-    @Published var SubTopicHeight: CGFloat = 0.0
 
     @Published var isRadial: Bool = false {
         didSet {
             if isRadial {
-                topicRadius = 200
-                topicFontSize = 1
+                branchsRadius = 200
             } else {
-                topicRadius = 12
+                branchsRadius = 12
             }
         }
     }
@@ -42,7 +80,7 @@ class designModel: ObservableObject {
         didSet {
             if isTimeLine {
                 isFill = true
-                topicPadding = 12
+
             }
         }
     }
@@ -51,7 +89,7 @@ class designModel: ObservableObject {
         didSet {
             if isOutline {
                 showBulletPoint = true
-                topicPadding = 2
+
                 isFill = false
                 topicFontSize = 2
             } else {
@@ -77,11 +115,10 @@ class designModel: ObservableObject {
             if isBento {
                 gridHorSpacing = 8
                 gridVerSpacing = 8
-                topicRadius = 12
+                branchsRadius = 12
                 isFilledHeight = true
                 isBorder = false
                 isBranch = false
-                topicPadding = 20
                 isFilledWidth = false
                 isFill = true
                 topicFontSize = 0
@@ -98,7 +135,6 @@ class designModel: ObservableObject {
         didSet {
             if isPadding {
                 isFill = true
-                topicPadding = 0
                 isFilledWidth = false
             } else {
                 isFill = false
@@ -108,24 +144,24 @@ class designModel: ObservableObject {
 
     @Published var isFilledHeight: Bool = false
     @Published var isFilledWidth: Bool = false
-    @Published var topicRadius: Double = 8
-    @Published var topicFontSize: Double = 0
+    @Published var branchsRadius: Double = 8
+
     @Published var branchOpacity: Double = 1
     @Published var gridHorSpacing: Double
     @Published var gridVerSpacing: Double = 8
     @Published var topicHeight: CGFloat = 0.0
     @Published var branchCenterToTopic = true
-    
+
     @Published var isGrid: Bool = false {
         didSet {
             if isGrid {
                 gridHorSpacing = 8
                 gridVerSpacing = 8
-                topicRadius = 12
+                branchsRadius = 12
                 isFilledHeight = false
                 isBorder = false
                 isBranch = true
-                topicPadding = 12
+//                topicPadding = 12
                 branchOpacity = 0.3
                 isFilledWidth = false
             } else {
@@ -139,11 +175,11 @@ class designModel: ObservableObject {
             if isTreeTable {
                 gridHorSpacing = 0
                 gridVerSpacing = 0
-                topicRadius = 0
+                branchsRadius = 0
                 isFilledHeight = true
                 isBorder = true
                 isBranch = false
-                topicPadding = 20
+//                topicPadding = 20
                 isFill = true
             } else {
                 isGrid = true
@@ -153,7 +189,8 @@ class designModel: ObservableObject {
 
     @Published var fontDesign: Font.Design = .default
     init() {
-        self.gridHorSpacing = UserDefaults.standard.object(forKey: "showWord") as? Double ?? 8
+        gridHorSpacing = UserDefaults.standard.object(forKey: "showWord") as? Double ?? 8
+
     }
 }
 
@@ -177,14 +214,14 @@ struct MainTopicModifier: ViewModifier {
             }
             content
         }
-        .font(.system(size: 16 + dm.topicFontSize))
+        .font(.system(size: dm.topicFontSize + dm.fontSizeFactor))
         .contentTransition(.numericText())
         .padding(dm.isPadding ? dm.topicPadding : 0)
+        .padding(.horizontal, dm.topicHorPadding)
         .frame(maxHeight: dm.isFilledHeight ? .infinity : .none)
         .frame(maxWidth: dm.isFilledWidth ? .infinity : .none, alignment: .leading)
-        .padding(2)
         .background(
-            RoundedRectangle(cornerRadius: dm.topicRadius)
+            RoundedRectangle(cornerRadius: dm.branchsRadius)
                 .stroke(dm.isBorder ? Color(UIColor.systemGray3) : .clear, lineWidth: 2)
         )
         .frame(width: dm.isRadial ? dm.mainTopicWidth : .none, height: dm.isRadial ? dm.mainTopicWidth : .none)
@@ -207,14 +244,15 @@ struct SubTopicModifier: ViewModifier {
             }
             content
         }
-        .font(.system(size: 16 - dm.topicFontSize / 2))
+        .font(.system(size: dm.subFontSize))
         .padding(dm.isPadding ? dm.topicPadding : 0)
+        .padding(.horizontal, dm.topicHorPadding)
         .contentTransition(.numericText())
         .frame(maxHeight: dm.isFilledHeight ? .infinity : .none)
         .frame(maxWidth: dm.isFilledWidth ? .infinity : .none, alignment: .leading)
         //        .frame(width: dm.isGrid && dm.isBentoStyle ? 0 : 130)
         .background(
-            RoundedRectangle(cornerRadius: dm.topicRadius)
+            RoundedRectangle(cornerRadius: dm.branchsRadius)
                 .stroke(dm.isBorder ? Color(UIColor.systemGray3) : .clear, lineWidth: 2)
         )
         .frame(width: dm.isRadial ? dm.subTopicWidth : .none, height: dm.isRadial ? dm.subTopicWidth : .none)
@@ -223,7 +261,6 @@ struct SubTopicModifier: ViewModifier {
         .monospacedDigit()
         .padding(.leading, dm.isTreeChart ? 40 : 0)
         .fontDesign(dm.fontDesignStyle)
-        
     }
 }
 
@@ -237,14 +274,15 @@ struct CentralTopicModifier: ViewModifier {
             }
             content
         }
-
-        .font(.system(size: 16 + dm.topicFontSize * 2))
+        .contentTransition(.numericText())
+        .font(.system(size: dm.centralFontSize + dm.fontSizeFactor * 2))
         .padding(dm.isPadding ? dm.topicPadding : 0)
+        .padding(.horizontal, dm.topicHorPadding)
         .frame(maxHeight: dm.isFilledHeight ? .infinity : .none)
         .frame(maxWidth: dm.isFilledWidth ? .infinity : .none, alignment: .leading)
         .padding(2)
         .background(
-            RoundedRectangle(cornerRadius: dm.topicRadius)
+            RoundedRectangle(cornerRadius: dm.branchsRadius)
                 .stroke(dm.isBorder ? Color(UIColor.systemGray3) : .clear, lineWidth: 2)
         )
         .frame(width: dm.isRadial ? dm.centerTopicWidth : .none, height: dm.isRadial ? dm.centerTopicWidth : .none)
@@ -304,14 +342,14 @@ extension designModel {
         }
     }
 
-//    var frameAlignment: Alignment {
-//        switch selectFontIndex {
-//        case .leading:
-//            return .leading
-//        case .center:
-//            return .center
-//        case .trailing:
-//            return .trailing
-//        }
-//    }
+    var selectTopicPadding: Double {
+        switch selectPaddingIndex{
+        case .large:
+            return topicPadding + 6
+        case .medium:
+            return topicPadding
+        case .small:
+            return topicPadding - 6
+        }
+    }
 }
