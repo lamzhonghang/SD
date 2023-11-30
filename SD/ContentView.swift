@@ -11,44 +11,67 @@ struct ContentView: View {
     @State private var sd = SDData()
     @StateObject var dm = designModel()
     @Namespace private var shapeTransition
+    @State private var showSidePanel = true
     
     var body: some View {
-        NavigationSplitView {
-            DetailCtrlView(dm: dm)
-                .navigationSplitViewColumnWidth(1000)
-                .navigationTitle("Format")
-                .navigationBarTitleDisplayMode(.inline)
-        } detail: {
-            NavigationStack{
-                ZStack{
-                    if dm.isTreeChart{
-                        TreeView(dm: dm, namespace: shapeTransition)
-                    } else if dm.isTimeLine{
-                        TimelineView(dm:dm, namespace: shapeTransition)
-                    } else if dm.isRadial{
-                        RadialView(dm:dm, namespace: shapeTransition)
-                    } else{
-                        GridView(dm:dm, namespace: shapeTransition)
+        ZStack {
+            Color.secondary.opacity(0.1)
+                .ignoresSafeArea(.all)
+            HStack(spacing: 12){
+//                if showSidePanel{
+                    DetailCtrlView(dm: dm)
+                        .navigationTitle("Format")
+                        .navigationBarTitleDisplayMode(.inline)
+                        .cornerRadius(20)
+                        .frame(width:420)
+                        .padding(.vertical)
+                        .transition(.move(edge: .leading).combined(with: .opacity))
+//                }
+                NavigationStack{
+                    ZStack{
+                        if dm.isTreeChart{
+                            TreeView(dm: dm, namespace: shapeTransition)
+                        } else if dm.isTimeLine{
+                            TimelineView(dm:dm, namespace: shapeTransition)
+                        } else if dm.isRadial{
+                            RadialView(dm:dm, namespace: shapeTransition)
+                        } else{
+                            GridView(dm:dm, namespace: shapeTransition)
+                        }
+                    }
+                    .frame(maxWidth: UIScreen.screenWidth, maxHeight: UIScreen.screenHeight / 4 * 2)
+                    .padding()
+                    .preferredColorScheme(dm.isDarkMode ? .dark : .light)
+                    .navigationTitle("SnowDance for Designer")
+                    .navigationBarTitleDisplayMode(.inline)
+                    .toolbar{
+                        ToolbarItem(placement: .topBarLeading) {
+                            Button{
+                                withAnimation(.snappy){
+                                    showSidePanel.toggle()
+                                }
+                            }label: {
+                                Image(systemName: "sidebar.left")
+                            }
+                        }
                     }
                 }
-                .frame(maxWidth: UIScreen.screenWidth, maxHeight: UIScreen.screenHeight / 4 * 2)
-                .padding()
-                .preferredColorScheme(dm.isDarkMode ? .dark : .light)
-                .navigationTitle("SnowDance for Designer")
-                .navigationBarTitleDisplayMode(.inline)
+                .cornerRadius(20)
+                .padding(.vertical)
             }
+            .padding(.horizontal)
         }
     }
 }
-
-#Preview("Home"){
-    ContentView()
-}
-
-//#Preview("Grid"){
-//    GridView()
-//}
-//
-//#Preview("TimeLine") {
-//    TimelineView(, namespace: <#Namespace.ID#>)
-//}
+    
+    #Preview("Home"){
+        ContentView()
+    }
+    
+    //#Preview("Grid"){
+    //    GridView()
+    //}
+    //
+    //#Preview("TimeLine") {
+    //    TimelineView(, namespace: <#Namespace.ID#>)
+    //}

@@ -15,9 +15,9 @@ struct SDApp: App {
     var body: some Scene {
         WindowGroup {
             if isPhone{
-                Paywall_C_2()
+                Paywall_Entry()
             } else{
-                Paywall_C_2()
+                ContentView()
             }
         }
     }

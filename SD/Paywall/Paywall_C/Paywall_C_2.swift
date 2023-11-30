@@ -20,8 +20,7 @@ struct blackCard: View {
                         .scaledToFit()
                         .frame(width: 100)
                         .frame(maxWidth: .infinity, alignment: .trailing)
-                        .shadow(color: .white, radius: glowing ? 20 : 10, x: 0, y: 0)
-                    
+                        .shadow(color: .white, radius: 10, x: 0, y: 0)
                         .shadow(color: .black, radius: 1, x: 1, y:1)
                 }
                 Spacer()
@@ -29,7 +28,7 @@ struct blackCard: View {
                     Text("50% OFF")
                     Spacer()
                 }
-                .font(.title2)
+                .font(.system(size: 42))
                 .fontWeight(.heavy)
                 .shadow(color: .white, radius: 10, x: 0, y: 0)
                 .shadow(color: .white.opacity(0.5), radius: glowing ? 20 : 10, x: 0, y: 0)
@@ -37,9 +36,9 @@ struct blackCard: View {
             }
             .fontDesign(.rounded)
             .frame(maxWidth: .infinity, alignment: .leading)
-            
         }
         .padding(20)
+        .padding(.horizontal, 12)
         .background(.ultraThinMaterial)
         .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
         .frame(height: 220)
@@ -130,69 +129,7 @@ struct ToolbarButton:View {
     }
 }
 
-struct GlowButtonView: View {
-    @Binding var showGlow: Bool
-    @Binding var showScale: Bool
-    @Binding var showPopUp : Bool
-    
-    var body: some View {
-        ZStack {
-            Button{
-                //
-            }label: {
-                HStack(spacing: 4){
-                    Text("Start 1 years for")
-                    Text("$29.99 !!")
-                    Text("$59.99")
-                        .strikethrough()
-                    //                        .overlay{
-                    //                            Image("strikethrough")
-                    //                        }
-                        .opacity(0.5)
-                }
-                .fontWeight(.semibold)
-                .foregroundColor(.black)
-                .fontDesign(.rounded)
-                .frame(maxWidth: .infinity)
-                .padding()
-                .background(
-                    RoundedRectangle(cornerRadius: 12, style: .continuous)
-                        .fill(.white)
-                        .overlay{
-                            RoundedRectangle(cornerRadius: 12, style: .continuous)
-                                .stroke(
-                                    LinearGradient(gradient: Gradient(colors: [ .black.opacity(0.7), .clear]), startPoint: .topLeading, endPoint: .bottomTrailing),
-                                    lineWidth: 3
-                                )
-                        }
-                        .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
-                        .overlay{
-                            LinearGradient(gradient: Gradient(colors: [ .clear,.black.opacity(0.1), .clear, .black.opacity(0.05), .clear]), startPoint: .topLeading, endPoint: .bottomTrailing)
-                                .offset(x:showGlow ? 300 : -300)
-                                .padding(.horizontal)
-                                .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
-                        }
-                    
-                )
-                .scaleEffect(showScale ? 1 : 1.01)
-                .padding(.top)
-            }
-            .frame(maxWidth: 420)
-        }
-        .onAppear{
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
-                withAnimation(Animation.easeInOut(duration: 2).repeatForever(autoreverses: false)) {
-                    showGlow.toggle()
-                }
-            }
-            Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { timer in
-                withAnimation(Animation.bouncy())  {
-                    showScale.toggle()
-                }
-            }
-        }
-    }
-}
+
 
 struct popupHorView: View {
     @Binding var showPopUpHor : Bool
@@ -222,7 +159,7 @@ struct popupHorView: View {
                             .frame(width: 280)
                             .padding(.top)
                         if showButton{
-                            GlowButtonView(showGlow: $showGlow, showScale: $showScale, showPopUp: $showPopUpHor)
+                            GlowingButtonView(showPopUp: $showPopUpHor)
                                 .transition(.move(edge: .bottom).combined(with: .opacity))
                             Text("Offer Valid: Nov 22 - Nov 27, 2023")
                                 .foregroundColor(.white.opacity(0.6))
@@ -243,19 +180,19 @@ struct popupHorView: View {
         .padding(.vertical)
         .background(
             Image("chaos")
-            .resizable()
-            .scaledToFit()
-            .scaleEffect(1.5)
-            .opacity(0.5)
-            .padding(30)
-            .clipShape(RoundedRectangle(cornerRadius: 20))
+                .resizable()
+                .scaledToFit()
+                .scaleEffect(1.5)
+                .opacity(0.5)
+                .padding(30)
+                .clipShape(RoundedRectangle(cornerRadius: 20))
         )
-   
+        
         .background(
             RoundedRectangle(cornerRadius: 30, style: .continuous)
                 .fill(.black)
         )
-       
+        
         .overlay(alignment: .topTrailing){
             HStack{
                 Spacer()
@@ -287,7 +224,7 @@ struct popupView: View {
     @Binding var showButton: Bool
     
     var body: some View {
-        VStack{
+        VStack(alignment: .leading){
             HStack{
                 Spacer()
                 Button{
@@ -300,111 +237,46 @@ struct popupView: View {
                         .padding(4)
                 }
             }
-            VStack{
+            VStack(alignment:.leading){
                 Text("Offer Valid: Nov 22 - Nov 27, 2023")
                     .foregroundColor(.white.opacity(0.6))
-                Image("black_friday")
+                    .font(.subheadline)
+                Image("black_friday_ver")
                     .resizable()
                     .scaledToFit()
+                    .frame(width: 240)
             }
             .offset(y: 24)
-            if showCard{
-                blackCard()
-                    .transition(.move(edge: .bottom).combined(with: .opacity).combined(with: .scale(1.5)))
-            }else{
-                RoundedRectangle(cornerRadius: 12)
-                    .fill(.black)
-                    .frame(height: 40)
-                    .opacity(0.01)
-            }
+            //            if showCard{
+            blackCard()
+                .transition(.move(edge: .bottom).combined(with: .opacity).combined(with: .scale(1.5)))
+            //            }else{
+            //                RoundedRectangle(cornerRadius: 12)
+            //                    .fill(.black)
+            //                    .frame(height: 40)
+            //                    .opacity(0.01)
+            //            }
             
-            if showButton{
-                GlowButtonView(showGlow: $showGlow, showScale: $showScale, showPopUp: $showPopUp)
-                    .transition(.move(edge: .bottom).combined(with: .opacity))
-            } else{
-                RoundedRectangle(cornerRadius: 12)
-                    .fill(.black)
-                    .frame(height: 40)
-                    .opacity(0.01)
-            }
+            //            if showButton{
+            GlowingButtonView(showPopUp: $showPopUp)
+                .transition(.move(edge: .bottom).combined(with: .opacity))
+            //            } else{
+            //                RoundedRectangle(cornerRadius: 12)
+            //                    .fill(.black)
+            //                    .frame(height: 40)
+            //                    .opacity(0.01)
+            //            }
         }
-        .padding()
+        .padding(24)
         .background(
             RoundedRectangle(cornerRadius: 20, style: .continuous)
                 .fill(.black)
         )
-        .padding(12)
+        .padding()
     }
 }
 
-struct BlackFridayEntry: View {
-    @Binding var showPopUp: Bool
-    @Binding var showCard: Bool
-    @Binding var showButton: Bool
-    
-    var body: some View {
-        VStack{
-            Button(action: {
-                withAnimation(.spring().speed(2)){
-                    self.showPopUp = true
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
-                        withAnimation(Animation.spring()) {
-                            showCard = true
-                        }
-                    }
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1){
-                        withAnimation(Animation.spring()) {
-                            showButton = true
-                        }
-                    }
-                }
-            }, label: {
-                HStack(spacing:16){
-                    VStack{
-                        Text("50%")
-                        Text("OFF")
-                    }
-                    .font(.title2)
-                    .fontWeight(.heavy)
-                    .foregroundColor(.white)
-                    .shadow(color: .white, radius: 10, x: 0, y: 0)
-                    .shadow(color: .black, radius: 1, x: 1, y:1)
-                    .padding(12)
-                    .fontDesign(.rounded)
-                    .background{
-                        RoundedRectangle(cornerRadius: 10, style: .continuous)
-                            .fill(.clear)
-                            .background(.ultraThinMaterial)
-                            .cornerRadius(12)
-                    }
-                    
-                    VStack(alignment: .leading){
-                        Image("black_friday")
-                            .resizable()
-                            .scaledToFit()
-                        HStack(spacing: 4){
-                            Text("Start 1 years for")
-                            Text("$29.99 !!")
-                            Text("$59.99")
-                                .strikethrough()
-                            //                        .overlay{
-                            //                            Image("strikethrough")
-                            //                        }
-                                .opacity(0.5)
-                        }
-                        .fontWeight(.semibold)
-                        .foregroundColor(.white)
-                    }
-                }
-                .padding(12)
-                .padding(.trailing,12)
-            })
-            .background(.black)
-            .cornerRadius(20)
-            .frame(maxWidth: 420)
-        }
-    }
-}
+
 
 struct Paywall_C_2: View {
     @State private var showPopUp = false
@@ -417,7 +289,7 @@ struct Paywall_C_2: View {
         ZStack{
             HStack{
                 ToolbarButton(showPopUp: $showPopUp, showCard: $showCard, showButton: $showButton)
-                BlackFridayEntry(showPopUp: $showPopUpHor, showCard: $showCard, showButton: $showButton)
+                BlackFridayEntry(showPopUp: $showPopUpHor)
                 Button{
                     showWeb.toggle()
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
@@ -495,7 +367,6 @@ struct WebHeroView: View {
                             Text("Pricing")
                             Text("Web")
                         }
-                        
                     }
                     .padding()
                     .frame(maxWidth: 1400)
@@ -529,7 +400,7 @@ struct WebHeroView: View {
                                     .frame(maxWidth: 2600)
                                 if showButton{
                                     VStack{
-                                        GlowButtonView(showGlow: $showGlow, showScale: $showScale, showPopUp: $showWeb)
+                                        GlowingButtonView(showPopUp: $showWeb)
                                             .transition(.move(edge: .bottom).combined(with: .opacity))
                                             .padding(.top, 100)
                                             .frame(maxWidth: 300)
@@ -538,7 +409,7 @@ struct WebHeroView: View {
                                             .padding(.top,6)
                                             .transition(.move(edge: .bottom).combined(with: .opacity))
                                     }
-                                        .scaleEffect(2)
+                                    .scaleEffect(2)
                                 } else{
                                     RoundedRectangle(cornerRadius: 12)
                                         .fill(.black)
@@ -555,10 +426,10 @@ struct WebHeroView: View {
                 .padding(.vertical)
                 .background(
                     Image("noise")
-                    .resizable()
-                    .scaledToFill()
-                    .blendMode(.multiply)
-                    .opacity(0.2)
+                        .resizable()
+                        .scaledToFill()
+                        .blendMode(.multiply)
+                        .opacity(0.2)
                 )
                 .background(
                     Image("chaos")
@@ -601,7 +472,7 @@ public extension AnyTransition {
     }
     
     static func blur(
-        intensity: CGFloat = 100,
+        intensity: CGFloat = 5,
         scale: CGFloat = 0.9,
         scaleAnimation animation: Animation = .spring()
     ) -> AnyTransition {
@@ -616,13 +487,7 @@ public extension AnyTransition {
     }
 }
 
-#Preview {
+#Preview("black friday"){
     Paywall_C_2()
-}
-
-
-#Preview {
-    blackCard()
-        .preferredColorScheme(.dark)
 }
 

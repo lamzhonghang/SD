@@ -19,27 +19,37 @@ class designModel: ObservableObject {
     @Published var isSerif: Bool = false
     @Published var isSans: Bool = false
     @Published var isRounded: Bool = false
-    @Published var isRadial: Bool = false{
-        didSet{
-            if isRadial{
+    @Published var selectFontIndex: FontDesignOption = .serif
+    @Published var isEditing = false
+    @Published var branchWidth: Double = 8
+    @Published var branchStroke: Double = 2
+
+    @Published var MainTopicHeight: CGFloat = 0.0
+    @Published var SubTopicHeight: CGFloat = 0.0
+
+    @Published var isRadial: Bool = false {
+        didSet {
+            if isRadial {
                 topicRadius = 200
                 topicFontSize = 1
-            } else{
+            } else {
                 topicRadius = 12
             }
         }
     }
-    @Published var isTimeLine: Bool = false{
-        didSet{
-            if isTimeLine{
+
+    @Published var isTimeLine: Bool = false {
+        didSet {
+            if isTimeLine {
                 isFill = true
                 topicPadding = 12
             }
         }
     }
-    @Published var isOutline: Bool = false{
-        didSet{
-            if isOutline{
+
+    @Published var isOutline: Bool = false {
+        didSet {
+            if isOutline {
                 showBulletPoint = true
                 topicPadding = 2
                 isFill = false
@@ -49,17 +59,19 @@ class designModel: ObservableObject {
             }
         }
     }
+
     @Published var isLeftAlign: Bool = false
     @Published var isTreeChart: Bool = false {
-        didSet{
-            if isTreeChart{
+        didSet {
+            if isTreeChart {
                 isFilledWidth = true
-            } else{
+            } else {
                 isFilledWidth = false
             }
         }
     }
-    @Published var topicColor: Color = Color(UIColor.systemGray5)
+
+    @Published var topicColor: Color = .init(UIColor.systemGray5)
     @Published var isBento: Bool = false {
         didSet {
             if isBento {
@@ -78,31 +90,35 @@ class designModel: ObservableObject {
             }
         }
     }
+
     @Published var isBorder: Bool = false
     @Published var isFill: Bool = true
     @Published var isBranch: Bool = true
-    @Published var isPadding: Bool = true{
-        didSet{
-            if isPadding{
+    @Published var isPadding: Bool = true {
+        didSet {
+            if isPadding {
                 isFill = true
                 topicPadding = 0
                 isFilledWidth = false
-            }else{
+            } else {
                 isFill = false
             }
         }
     }
+
     @Published var isFilledHeight: Bool = false
     @Published var isFilledWidth: Bool = false
     @Published var topicRadius: Double = 8
     @Published var topicFontSize: Double = 0
-    @Published var branchOpacity: Double = 0.3
+    @Published var branchOpacity: Double = 1
     @Published var gridHorSpacing: Double
     @Published var gridVerSpacing: Double = 8
     @Published var topicHeight: CGFloat = 0.0
+    @Published var branchCenterToTopic = true
+    
     @Published var isGrid: Bool = false {
         didSet {
-            if isGrid{
+            if isGrid {
                 gridHorSpacing = 8
                 gridVerSpacing = 8
                 topicRadius = 12
@@ -117,6 +133,7 @@ class designModel: ObservableObject {
             }
         }
     }
+
     @Published var isTreeTable: Bool = false {
         didSet {
             if isTreeTable {
@@ -133,24 +150,17 @@ class designModel: ObservableObject {
             }
         }
     }
+
+    @Published var fontDesign: Font.Design = .default
     init() {
         self.gridHorSpacing = UserDefaults.standard.object(forKey: "showWord") as? Double ?? 8
     }
 }
 
-enum FontDesign: String, CaseIterable, Identifiable {
-    case defaultDesign = "Default"
-    case serif = "Serif"
-    case sansSerif = "Sans Serif"
-    case monospaced = "Monospaced"
-    
-    var id: String { self.rawValue }
-}
-
-struct BulletPointView: View{
+struct BulletPointView: View {
     @ObservedObject var dm = designModel()
-    
-    var body: some View{
+
+    var body: some View {
         Circle()
             .frame(width: 4)
             .opacity(0.3)
@@ -159,10 +169,10 @@ struct BulletPointView: View{
 
 struct MainTopicModifier: ViewModifier {
     @ObservedObject var dm = designModel()
-    
+
     func body(content: Content) -> some View {
-        HStack{
-            if dm.showBulletPoint{
+        HStack {
+            if dm.showBulletPoint {
                 BulletPointView(dm: dm)
             }
             content
@@ -177,63 +187,57 @@ struct MainTopicModifier: ViewModifier {
             RoundedRectangle(cornerRadius: dm.topicRadius)
                 .stroke(dm.isBorder ? Color(UIColor.systemGray3) : .clear, lineWidth: 2)
         )
-        .frame(width: dm.isRadial ? dm.mainTopicWidth : .none, height: dm.isRadial ?  dm.mainTopicWidth : .none)
-        .background(dm.isFill ?  dm.topicColor.opacity(0.7) : .clear)
+        .frame(width: dm.isRadial ? dm.mainTopicWidth : .none, height: dm.isRadial ? dm.mainTopicWidth : .none)
+        .background(dm.isFill ? dm.topicColor.opacity(0.7) : .clear)
         .cornerRadius(dm.topicRadius)
         .monospacedDigit()
         .padding(.leading, dm.isTreeChart ? 20 : 0)
         .bold()
-        .fontDesign(dm.isSerif ? .serif : .default)
-        //            .fontDesign(dm.isDefault ? .default : .serif)
-        .fontDesign(dm.isRounded ? .serif : .monospaced)
+        .fontDesign(dm.fontDesignStyle)
     }
 }
 
-
-
-
 struct SubTopicModifier: ViewModifier {
     @ObservedObject var dm = designModel()
-    
+
     func body(content: Content) -> some View {
-        HStack{
-            if dm.showBulletPoint{
+        HStack {
+            if dm.showBulletPoint {
                 BulletPointView(dm: dm)
             }
             content
         }
         .font(.system(size: 16 - dm.topicFontSize / 2))
         .padding(dm.isPadding ? dm.topicPadding : 0)
+        .contentTransition(.numericText())
         .frame(maxHeight: dm.isFilledHeight ? .infinity : .none)
         .frame(maxWidth: dm.isFilledWidth ? .infinity : .none, alignment: .leading)
-        .padding(2)
         //        .frame(width: dm.isGrid && dm.isBentoStyle ? 0 : 130)
         .background(
             RoundedRectangle(cornerRadius: dm.topicRadius)
                 .stroke(dm.isBorder ? Color(UIColor.systemGray3) : .clear, lineWidth: 2)
         )
-        .frame(width: dm.isRadial ? dm.subTopicWidth : .none, height: dm.isRadial ?  dm.subTopicWidth : .none)
+        .frame(width: dm.isRadial ? dm.subTopicWidth : .none, height: dm.isRadial ? dm.subTopicWidth : .none)
         .background(dm.isFill ? dm.topicColor.opacity(0.3) : .clear)
         .cornerRadius(dm.topicRadius)
         .monospacedDigit()
         .padding(.leading, dm.isTreeChart ? 40 : 0)
-        .fontDesign(dm.isSerif ? .serif : .default)
-        //        .fontDesign(dm.isDefault ? .default : .serif)
-        .fontDesign(dm.isRounded ? .rounded : .default)
+        .fontDesign(dm.fontDesignStyle)
+        
     }
 }
 
 struct CentralTopicModifier: ViewModifier {
     @ObservedObject var dm = designModel()
-    
+
     func body(content: Content) -> some View {
-        HStack{
-            if dm.showBulletPoint{
+        HStack {
+            if dm.showBulletPoint {
                 BulletPointView(dm: dm)
             }
             content
         }
-        
+
         .font(.system(size: 16 + dm.topicFontSize * 2))
         .padding(dm.isPadding ? dm.topicPadding : 0)
         .frame(maxHeight: dm.isFilledHeight ? .infinity : .none)
@@ -243,50 +247,71 @@ struct CentralTopicModifier: ViewModifier {
             RoundedRectangle(cornerRadius: dm.topicRadius)
                 .stroke(dm.isBorder ? Color(UIColor.systemGray3) : .clear, lineWidth: 2)
         )
-        .frame(width: dm.isRadial ? dm.centerTopicWidth : .none, height: dm.isRadial ?  dm.centerTopicWidth : .none)
+        .frame(width: dm.isRadial ? dm.centerTopicWidth : .none, height: dm.isRadial ? dm.centerTopicWidth : .none)
         .background(dm.isFill ? dm.topicColor : .clear)
         .cornerRadius(dm.topicRadius)
         .monospacedDigit()
         .bold()
-        .fontDesign(dm.isSerif ? .serif : .default)
-        //            .fontDesign(dm.isDefault ? .default : .serif)
-        .fontDesign(dm.isRounded ? .rounded : .default)
+        .fontDesign(dm.fontDesignStyle)
     }
 }
-
 
 struct PanelTextModifier: ViewModifier {
     @ObservedObject var dm = designModel()
-    
+
     func body(content: Content) -> some View {
         content
             .font(.subheadline)
-            .padding(.horizontal, 8)
+            .foregroundStyle(.tertiary)
+            .bold()
             .frame(maxWidth: .infinity, alignment: .leading)
-            .padding()
     }
 }
 
-
 extension View {
-    
     func mainTopic(dm: designModel) -> some View {
-        self.modifier(MainTopicModifier(dm: dm))
+        modifier(MainTopicModifier(dm: dm))
     }
-    
+
     func subTopic(dm: designModel) -> some View {
-        self.modifier(SubTopicModifier(dm: dm))
+        modifier(SubTopicModifier(dm: dm))
     }
-    
+
     func centralTopic(dm: designModel) -> some View {
-        self.modifier(CentralTopicModifier(dm: dm))
+        modifier(CentralTopicModifier(dm: dm))
     }
-    
+
     func panelText(dm: designModel) -> some View {
-        self.modifier(PanelTextModifier(dm: dm))
+        modifier(PanelTextModifier(dm: dm))
     }
-    
+
     func BTitle() -> some View {
-        self.modifier(BTitleModifier())
+        modifier(BTitleModifier())
     }
+}
+
+extension designModel {
+    var fontDesignStyle: Font.Design {
+        switch selectFontIndex {
+        case .sansSerif:
+            return .default
+        case .serif:
+            return .serif
+        case .rounded:
+            return .rounded
+        case .monospaced:
+            return .monospaced
+        }
+    }
+
+//    var frameAlignment: Alignment {
+//        switch selectFontIndex {
+//        case .leading:
+//            return .leading
+//        case .center:
+//            return .center
+//        case .trailing:
+//            return .trailing
+//        }
+//    }
 }

@@ -30,9 +30,6 @@ struct Paywall_Button: View {
                 .symbolRenderingMode(.hierarchical)
                 .foregroundColor(.secondary)
         }
-        //        .padding(20)
-        //        .background(.fill.quaternary)
-        //        .cornerRadius(20)
     }
 }
 
@@ -170,7 +167,7 @@ struct Paywall_Entry: View {
                 Paywall_B_2()
                 
             })
-            .fullScreenCover(isPresented: $showB3, content: {
+            .sheet(isPresented: $showB3, content: {
                 Paywall_B_3()
                 
             })
