@@ -18,29 +18,22 @@ struct styleSwitchView: View {
         let id = UUID()
         let name: String
         let imageName: String
-        @Binding var action: Bool
-        let hasDropdown: Bool
-        var dropdownAction: (() -> Void)?
+        let type: OptionType
         
-        func hash(into hasher: inout Hasher) {
-            hasher.combine(id)
-        }
-        
-        static func ==(lhs: Option, rhs: Option) -> Bool {
-            return lhs.id == rhs.id
+        enum OptionType {
+            case grid, radial, bento, table, indent, timeline, outline
         }
     }
     
     var options: [Option] {
         [
-            Option(name: "Radial", imageName: "circle.hexagonpath", action: $dm.isRadial, hasDropdown: false) {},
-            Option(name: "Bento", imageName: "rectangle.3.group", action: $dm.isBento, hasDropdown: true) {
-                dm.isFilledHeight = true
-            },
-            Option(name: "Table", imageName: "tablecells", action: $dm.isTreeTable, hasDropdown: false) {},
-            Option(name: "Indent", imageName: "list.bullet.indent", action: $dm.isTreeChart, hasDropdown: true) {},
-            Option(name: "Timeline", imageName: "calendar.day.timeline.left", action: $dm.isTimeLine, hasDropdown: true) {},
-            Option(name: "Outline", imageName: "list.bullet.rectangle.portrait", action: $dm.isOutline, hasDropdown: false) {},
+            Option(name: "Grid", imageName: "square.fill.text.grid.1x2", type: .grid),
+            Option(name: "Radial", imageName: "circle.hexagonpath", type: .radial),
+            Option(name: "Bento", imageName: "rectangle.3.group", type: .bento),
+            Option(name: "Table", imageName: "tablecells", type: .table),
+            Option(name: "Timeline", imageName: "lines.measurement.horizontal", type: .timeline),
+            Option(name: "Indent", imageName: "chart.bar.doc.horizontal", type: .indent),
+            Option(name: "Outline", imageName: "list.bullet.indent", type: .outline),
         ]
     }
     
@@ -49,27 +42,25 @@ struct styleSwitchView: View {
             ForEach(options.indices, id: \.self) { index in
                 VStack(alignment: .center) {
                     Image(systemName: options[index].imageName)
-                        .font(.title2)
+                        .font(.title3)
+                        .frame(height: 20)
                     Text(options[index].name)
                         .font(.footnote)
                         .padding(.top, 4)
                 }
-                .padding(.vertical)
-                .foregroundColor(options[index].action ? .primary : .secondary)
+                .padding(.vertical, 12)
                 .frame(maxWidth: .infinity)
                 .background(.secondary.opacity(0.05))
                 .cornerRadius(12)
-                .overlay {
-                    RoundedRectangle(cornerRadius: 8, style: .continuous)
-                        .stroke(options[index].action ? Color(UIColor.label) : .clear, lineWidth: 2)
-                }
+                .overlay(
+                    RoundedRectangle(cornerRadius: 12, style: .continuous)
+                        .stroke(dm.selectStyleIndex == index ? Color.accentColor : .clear, lineWidth: 2)
+                )
                 .padding(.horizontal, 2)
                 .onTapGesture {
                     withAnimation {
-                        for i in options.indices {
-                            options[i].action = (i == index)
-                        }
                         dm.selectStyleIndex = index
+                        dm.selectOption(options[index])
                     }
                 }
             }

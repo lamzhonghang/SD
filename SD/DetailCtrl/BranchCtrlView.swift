@@ -24,46 +24,66 @@ struct BranchCtrlView: View {
     }()
 
     var body: some View {
-        VStack {
-            HStack {
-                Text("Branch Width")
-                Slider(
-                    value: $dm.branchWidth,
-                    in: 1 ... 30,
-                    onEditingChanged: { editing in
-                        dm.isEditing = editing
-                    }
-                )
-                TextField("", value: $dm.branchWidth, formatter: numberFormatter)
-                    .customInput()
+        Grid {
+            Toggle(isOn: $dm.isBranch.animation()) {
+                Text("Branch")
             }
-            HStack {
-                Text("Branch Stroke")
-                Slider(
-                    value: $dm.branchStroke,
-                    in: 1 ... 10,
-                    onEditingChanged: { editing in
-                        dm.isEditing = editing
-                    }
-                )
-                TextField("", value: $dm.branchStroke, formatter: numberFormatter)
-                    .customInput()
+            if dm.isBranch {
+                GridRow {
+                    Text("Width")
+                    Slider(
+                        value: $dm.branchWidth,
+                        in: 1 ... 30,
+                        onEditingChanged: { editing in
+                            dm.isEditing = editing
+                        }
+                    )
+                    TextField("", value: $dm.branchWidth, formatter: numberFormatter)
+                        .customInput()
+                }
+
+                GridRow {
+                    Text("Stroke")
+                    Slider(
+                        value: $dm.branchStroke,
+                        in: 1 ... 10,
+                        onEditingChanged: { editing in
+                            dm.isEditing = editing
+                        }
+                    )
+                    TextField("", value: $dm.branchStroke, formatter: numberFormatter)
+                        .customInput()
+                }
+
+                GridRow {
+                    Text("Branch Radius")
+                    Slider(
+                        value: $dm.branchsRadius,
+                        in: 0 ... 20,
+                        onEditingChanged: { editing in
+                            dm.isEditing = editing
+                        }
+                    )
+                    TextField("", value: $dm.branchsRadius, formatter: numberFormatter)
+                        .customInput()
+                }
+
+                GridRow {
+                    Text("Opacity")
+                    Slider(
+                        value: $dm.branchOpacity,
+                        in: 0 ... 1,
+                        onEditingChanged: { editing in
+                            dm.isEditing = editing
+                        }
+                    )
+                    TextField("", value: $dm.branchOpacity, formatter: numberFormatter2)
+                        .customInput()
+                }
+                .gridColumnAlignment(.leading)
+
+                Toggle("Branch End in the Middle of Topic", isOn: $dm.branchCenterToTopic.animation(.bouncy))
             }
-//            if dm.isBranch {
-//                HStack {
-//                    Text("Opacity")
-//                    Slider(
-//                        value: $dm.branchOpacity,
-//                        in: 0 ... 1,
-//                        onEditingChanged: { editing in
-//                            dm.isEditing = editing
-//                        }
-//                    )
-//                    TextField("", value: $dm.branchOpacity, formatter: numberFormatter2)
-//                        .customInput()
-//                }
-//            }
-            Toggle("Branch End in the Middle of Topic", isOn: $dm.branchCenterToTopic.animation(.bouncy))
         }
     }
 }

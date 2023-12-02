@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct RadiusCtrlView: View {
+struct FillCtrlView: View {
     @ObservedObject var dm = designModel()
     private let numberFormatter: NumberFormatter = {
         let numberFormatter = NumberFormatter()
@@ -18,33 +18,53 @@ struct RadiusCtrlView: View {
 
     var body: some View {
         Grid {
-            Text("Radius")
-                .panelText(dm: dm)
-            RadiusPickerView(dm: dm)
-            GridRow {
-                Text("Branch Radius")
-                Slider(
-                    value: $dm.branchsRadius,
-                    in: 0 ... 20,
-                    onEditingChanged: { editing in
-                        dm.isEditing = editing
-                    }
-                )
-                TextField("", value: $dm.branchsRadius, formatter: numberFormatter)
-                    .customInput()
-            }
-            GridRow {
-                Text("Topic Radius")
-                    .gridColumnAlignment(.leading)
-                Slider(
-                    value: $dm.topicRadius,
-                    in: 0 ... 20,
-                    onEditingChanged: { editing in
-                        dm.isEditing = editing
-                    }
-                )
-                TextField("", value: $dm.topicRadius, formatter: numberFormatter)
-                    .customInput()
+            Toggle("Fill", isOn: $dm.isFill.animation())
+            if dm.isFill {
+//                ColorPicker("Color", selection: $dm.topicColor, supportsOpacity: true)
+                
+                RadiusPickerView(dm: dm)
+                GridRow {
+                    Text("Topic Radius")
+                        .gridColumnAlignment(.leading)
+                    Slider(
+                        value: $dm.topicRadius,
+                        in: 0 ... 20,
+                        onEditingChanged: { editing in
+                            dm.isEditing = editing
+                        }
+                    )
+                    TextField("", value: $dm.topicRadius, formatter: numberFormatter)
+                        .customInput()
+                }
+                
+//                GridRow {
+//                    Text("Fill Opacity")
+//                        .gridColumnAlignment(.leading)
+//                    Slider(
+//                        value: $dm.fillOpacity,
+//                        in: 0 ... 0.2,
+//                        step: 0.01,
+//                        onEditingChanged: { editing in
+//                            dm.isEditing = editing
+//                        }
+//                    )
+//                    TextField("", value: $dm.fillOpacity, formatter: numberFormatter)
+//                        .customInput()
+//                }
+//                GridRow {
+//                    Text("Fill Hiranchy")
+//                        .gridColumnAlignment(.leading)
+//                    Slider(
+//                        value: $dm.topicBrightness,
+//                        in: 0 ... 1,
+//                        step: 0.1,
+//                        onEditingChanged: { editing in
+//                            dm.isEditing = editing
+//                        }
+//                    )
+//                    TextField("", value: $dm.topicBrightness, formatter: numberFormatter)
+//                        .customInput()
+//                }
             }
         }
     }
@@ -106,5 +126,5 @@ struct RadiusPickerView: View {
 }
 
 #Preview {
-    RadiusCtrlView()
+    FillCtrlView()
 }

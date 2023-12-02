@@ -29,7 +29,7 @@ struct secondaryBracketView: View {
     var body: some View {
         HStack(spacing: 0) {
             BranchShapeBar(dm: dm)
-                .stroke(Color.black, style: StrokeStyle(
+                .stroke(Color(UIColor.label), style: StrokeStyle(
                     lineWidth: dm.branchStroke,
                     lineCap: .round
                 ))
@@ -49,7 +49,7 @@ struct secondaryBracketView: View {
     func branch() -> some View {
         VStack {
             BranchShape(dm: dm, y: y)
-                .stroke(Color.black, style: StrokeStyle(
+                .stroke(Color(UIColor.label), style: StrokeStyle(
                     lineWidth: dm.branchStroke,
                     lineCap: .round
                 ))
@@ -79,7 +79,7 @@ struct bracketView: View {
     var body: some View {
         HStack(spacing: 0) {
             BranchShapeBar(dm: dm)
-                .stroke(Color.black, style: StrokeStyle(
+                .stroke(Color(UIColor.label), style: StrokeStyle(
                     lineWidth: dm.branchStroke,
                     lineCap: .round
                 ))
@@ -87,7 +87,6 @@ struct bracketView: View {
 
             VStack {
                 branch()
-
                 branch()
                     .scaleEffect(x: 1, y: -1, anchor: .center)
             }
@@ -100,7 +99,7 @@ struct bracketView: View {
     func branch() -> some View {
         VStack {
             CentralBranchShape(dm: dm, y: y)
-                .stroke(Color.black, style: StrokeStyle(
+                .stroke(Color(UIColor.label), style: StrokeStyle(
                     lineWidth: dm.branchStroke,
                     lineCap: .round
                 ))

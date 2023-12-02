@@ -11,6 +11,7 @@
 		3F07F78A2AEB6C730090C8C0 /* FAQ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F07F7892AEB6C730090C8C0 /* FAQ.swift */; };
 		3F07F78D2AEB7A4E0090C8C0 /* UserComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F07F78C2AEB7A4E0090C8C0 /* UserComment.swift */; };
 		3F07F78F2AEB85FD0090C8C0 /* GidtCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F07F78E2AEB85FD0090C8C0 /* GidtCardView.swift */; };
+		3F13A57B2B18B32A00C7B20A /* BorderCtrlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F13A57A2B18B32A00C7B20A /* BorderCtrlView.swift */; };
 		3F1E3DED2AEE8E5000D3E860 /* MemberCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1E3DEC2AEE8E5000D3E860 /* MemberCard.swift */; };
 		3F34ED342AED2B0E0042C810 /* FeatureListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F34ED332AED2B0E0042C810 /* FeatureListView.swift */; };
 		3F34ED362AED2B520042C810 /* BFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F34ED352AED2B520042C810 /* BFooter.swift */; };
@@ -18,7 +19,7 @@
 		3F34ED3A2AED33DE0042C810 /* BbannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F34ED392AED33DE0042C810 /* BbannerView.swift */; };
 		3F3C01892AF8B52C00414ACE /* BFEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3C01882AF8B52C00414ACE /* BFEntry.swift */; };
 		3F449B292B170F9E00453C59 /* LayoutPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F449B282B170F9E00453C59 /* LayoutPickerView.swift */; };
-		3F449B2B2B17107300453C59 /* RadiusCtrlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F449B2A2B17107300453C59 /* RadiusCtrlView.swift */; };
+		3F449B2B2B17107300453C59 /* FillCtrlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F449B2A2B17107300453C59 /* FillCtrlView.swift */; };
 		3F449B2D2B17182D00453C59 /* GetHeightExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F449B2C2B17182D00453C59 /* GetHeightExtension.swift */; };
 		3F48CD932B186E250037D314 /* fontCtrlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F48CD922B186E250037D314 /* fontCtrlView.swift */; };
 		3F48CD952B187E580037D314 /* PaddingCtrlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F48CD942B187E580037D314 /* PaddingCtrlView.swift */; };
@@ -61,6 +62,7 @@
 		3F07F7892AEB6C730090C8C0 /* FAQ.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQ.swift; sourceTree = "<group>"; };
 		3F07F78C2AEB7A4E0090C8C0 /* UserComment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserComment.swift; sourceTree = "<group>"; };
 		3F07F78E2AEB85FD0090C8C0 /* GidtCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GidtCardView.swift; sourceTree = "<group>"; };
+		3F13A57A2B18B32A00C7B20A /* BorderCtrlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderCtrlView.swift; sourceTree = "<group>"; };
 		3F1E3DEC2AEE8E5000D3E860 /* MemberCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberCard.swift; sourceTree = "<group>"; };
 		3F34ED332AED2B0E0042C810 /* FeatureListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureListView.swift; sourceTree = "<group>"; };
 		3F34ED352AED2B520042C810 /* BFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BFooter.swift; sourceTree = "<group>"; };
@@ -68,7 +70,7 @@
 		3F34ED392AED33DE0042C810 /* BbannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BbannerView.swift; sourceTree = "<group>"; };
 		3F3C01882AF8B52C00414ACE /* BFEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BFEntry.swift; sourceTree = "<group>"; };
 		3F449B282B170F9E00453C59 /* LayoutPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutPickerView.swift; sourceTree = "<group>"; };
-		3F449B2A2B17107300453C59 /* RadiusCtrlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadiusCtrlView.swift; sourceTree = "<group>"; };
+		3F449B2A2B17107300453C59 /* FillCtrlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillCtrlView.swift; sourceTree = "<group>"; };
 		3F449B2C2B17182D00453C59 /* GetHeightExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetHeightExtension.swift; sourceTree = "<group>"; };
 		3F48CD922B186E250037D314 /* fontCtrlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fontCtrlView.swift; sourceTree = "<group>"; };
 		3F48CD942B187E580037D314 /* PaddingCtrlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingCtrlView.swift; sourceTree = "<group>"; };
@@ -173,7 +175,8 @@
 			isa = PBXGroup;
 			children = (
 				3F91549E2B173570008F8676 /* BranchCtrlView.swift */,
-				3F449B2A2B17107300453C59 /* RadiusCtrlView.swift */,
+				3F449B2A2B17107300453C59 /* FillCtrlView.swift */,
+				3F13A57A2B18B32A00C7B20A /* BorderCtrlView.swift */,
 				3F48CD942B187E580037D314 /* PaddingCtrlView.swift */,
 				3F8C55232B15CEDF00B73622 /* GapCtrlView.swift */,
 				3F449B282B170F9E00453C59 /* LayoutPickerView.swift */,
@@ -318,7 +321,7 @@
 				3FB178722ADFB7F3002F1A38 /* ContentView.swift in Sources */,
 				3FEF74D92B032BD700881D61 /* customSegment.swift in Sources */,
 				3F07F78F2AEB85FD0090C8C0 /* GidtCardView.swift in Sources */,
-				3F449B2B2B17107300453C59 /* RadiusCtrlView.swift in Sources */,
+				3F449B2B2B17107300453C59 /* FillCtrlView.swift in Sources */,
 				3FA7618F2AE4E00A00AD6817 /* Paywall_A_2.swift in Sources */,
 				3FF1B3822AE386F200C88054 /* Paywall_A_3.swift in Sources */,
 				3F1E3DED2AEE8E5000D3E860 /* MemberCard.swift in Sources */,
@@ -343,6 +346,7 @@
 				3F5AC4A32AE0ED2C00B7B384 /* BranchView.swift in Sources */,
 				3FB178802ADFBF0B002F1A38 /* DetailCtrlView.swift in Sources */,
 				3FB178702ADFB7F3002F1A38 /* SDApp.swift in Sources */,
+				3F13A57B2B18B32A00C7B20A /* BorderCtrlView.swift in Sources */,
 				3FA7618D2AE4C07600AD6817 /* Paywall_A_1.swift in Sources */,
 				3F8C55222B15CAFA00B73622 /* FontPicker.swift in Sources */,
 				3F07F7882AEB6C3A0090C8C0 /* awardCombine.swift in Sources */,

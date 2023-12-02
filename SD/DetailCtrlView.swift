@@ -33,18 +33,21 @@ struct DetailCtrlView: View {
                     GapCtrlView(dm: dm)
                     PaddingCtrlView(dm: dm)
                     Divider()
-                    RadiusCtrlView(dm: dm)
+                    Text("Fill")
+                        .panelText(dm: dm)
+                    FillCtrlView(dm: dm)
+                    Divider()
+                    Text("Branch")
+                        .panelText(dm: dm)
                     BranchCtrlView(dm: dm)
-
+                    Divider()
+                    Text("Border")
+                        .panelText(dm: dm)
+                    BorderCtrlView(dm: dm)
+                    Divider()
                     Section {
                         Toggle(isOn: $dm.isFill.animation(.bouncy(extraBounce: -0.1))) {
                             Text("Fill")
-                        }
-                        Toggle(isOn: $dm.isBorder.animation(.bouncy(extraBounce: -0.1))) {
-                            Text("Border")
-                        }
-                        Toggle(isOn: $dm.isBranch.animation(.bouncy(extraBounce: -0.1))) {
-                            Text("Branch")
                         }
 
                         Toggle(isOn: $dm.isFilledHeight.animation(.bouncy(extraBounce: -0.1))) {
@@ -56,36 +59,11 @@ struct DetailCtrlView: View {
                         Toggle(isOn: $dm.isPadding.animation(.bouncy(extraBounce: -0.1))) {
                             Text("Padding")
                         }
-//                        if dm.isPadding {
-//                            Stepper(
-//                                value: $dm.topicPadding.animation(.bouncy),
-//                                in: 0...18,
-//                                step: 6
-//                            ) {
-//                                Text("Padding: \(Int(dm.SubTopicHeight))")
-//                            }
-//                        }
-                        Stepper(
-                            value: $dm.topicFontSize.animation(.bouncy),
-                            in: 0 ... 4,
-                            step: 2
-                        ) {
-                            Text("Font Contrast: \(Int(dm.topicFontSize / 2))")
-                        }
                     }
-
-                    //            Section("Font"){
-                    //                Picker("",selection: $dm.topicFontFamilySelection){
-                    //                    ForEach(FontDesign.allCases, id: \.self) { design in
-                    //                           Text(design.rawValue)
-                    //                       }
-                    //                }
-                    //                .pickerStyle(.segmented)
-                    //            }
                 }
                 .padding(.horizontal, 20)
             }
-            //            .formStyle(.grouped)
+            .tint(.accentColor)
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
