@@ -28,12 +28,12 @@ struct styleSwitchView: View {
     var options: [Option] {
         [
             Option(name: "Grid", imageName: "square.fill.text.grid.1x2", type: .grid),
-            Option(name: "Radial", imageName: "circle.hexagonpath", type: .radial),
             Option(name: "Bento", imageName: "rectangle.3.group", type: .bento),
             Option(name: "Table", imageName: "tablecells", type: .table),
             Option(name: "Timeline", imageName: "lines.measurement.horizontal", type: .timeline),
             Option(name: "Indent", imageName: "chart.bar.doc.horizontal", type: .indent),
             Option(name: "Outline", imageName: "list.bullet.indent", type: .outline),
+            Option(name: "Radial", imageName: "circle.hexagonpath", type: .radial),
         ]
     }
     

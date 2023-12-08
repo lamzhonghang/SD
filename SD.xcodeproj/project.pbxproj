@@ -29,7 +29,9 @@
 		3F5AC4A32AE0ED2C00B7B384 /* BranchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5AC4A22AE0ED2C00B7B384 /* BranchView.swift */; };
 		3F5AC4A52AE0F37400B7B384 /* TimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5AC4A42AE0F37400B7B384 /* TimelineView.swift */; };
 		3F6563D52AF9E5DE0047DAA3 /* GlowingButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6563D42AF9E5DE0047DAA3 /* GlowingButtonView.swift */; };
+		3F73781B2B1ECEEF006F9108 /* DynamicColor in Frameworks */ = {isa = PBXBuildFile; productRef = 3F73781A2B1ECEEF006F9108 /* DynamicColor */; };
 		3F7BF9882AEA9B2000ECF064 /* ComparePlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7BF9872AEA9B2000ECF064 /* ComparePlanView.swift */; };
+		3F8258792B22EA8700AAD83B /* AiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8258782B22EA8700AAD83B /* AiView.swift */; };
 		3F8C55222B15CAFA00B73622 /* FontPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8C55212B15CAFA00B73622 /* FontPicker.swift */; };
 		3F8C55242B15CEDF00B73622 /* GapCtrlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8C55232B15CEDF00B73622 /* GapCtrlView.swift */; };
 		3F8EACA92AE7D487000E35F7 /* Paywall_boarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8EACA82AE7D487000E35F7 /* Paywall_boarding.swift */; };
@@ -81,6 +83,7 @@
 		3F5AC4A42AE0F37400B7B384 /* TimelineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineView.swift; sourceTree = "<group>"; };
 		3F6563D42AF9E5DE0047DAA3 /* GlowingButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlowingButtonView.swift; sourceTree = "<group>"; };
 		3F7BF9872AEA9B2000ECF064 /* ComparePlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComparePlanView.swift; sourceTree = "<group>"; };
+		3F8258782B22EA8700AAD83B /* AiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AiView.swift; sourceTree = "<group>"; };
 		3F8C55212B15CAFA00B73622 /* FontPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontPicker.swift; sourceTree = "<group>"; };
 		3F8C55232B15CEDF00B73622 /* GapCtrlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GapCtrlView.swift; sourceTree = "<group>"; };
 		3F8EACA82AE7D487000E35F7 /* Paywall_boarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paywall_boarding.swift; sourceTree = "<group>"; };
@@ -114,6 +117,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F73781B2B1ECEEF006F9108 /* DynamicColor in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,6 +223,7 @@
 			children = (
 				3FB1786F2ADFB7F3002F1A38 /* SDApp.swift */,
 				3FB178712ADFB7F3002F1A38 /* ContentView.swift */,
+				3F8258782B22EA8700AAD83B /* AiView.swift */,
 				3F5AC4A22AE0ED2C00B7B384 /* BranchView.swift */,
 				3F5AC4A02AE0ECFE00B7B384 /* TreeView.swift */,
 				3F5AC49E2AE0ECE400B7B384 /* GridView.swift */,
@@ -263,6 +268,9 @@
 			dependencies = (
 			);
 			name = SD;
+			packageProductDependencies = (
+				3F73781A2B1ECEEF006F9108 /* DynamicColor */,
+			);
 			productName = SD;
 			productReference = 3FB1786C2ADFB7F3002F1A38 /* SD.app */;
 			productType = "com.apple.product-type.application";
@@ -291,6 +299,9 @@
 				Base,
 			);
 			mainGroup = 3FB178632ADFB7F3002F1A38;
+			packageReferences = (
+				3F7378192B1ECEEF006F9108 /* XCRemoteSwiftPackageReference "DynamicColor" */,
+			);
 			productRefGroup = 3FB1786D2ADFB7F3002F1A38 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -334,6 +345,7 @@
 				3F48CD952B187E580037D314 /* PaddingCtrlView.swift in Sources */,
 				3F34ED362AED2B520042C810 /* BFooter.swift in Sources */,
 				3F5AC49F2AE0ECE400B7B384 /* GridView.swift in Sources */,
+				3F8258792B22EA8700AAD83B /* AiView.swift in Sources */,
 				3F6563D52AF9E5DE0047DAA3 /* GlowingButtonView.swift in Sources */,
 				3FCA94B02AF8792E007E9DF2 /* Paywall_BF.swift in Sources */,
 				3FEAFCBF2AF0DAD800C9ED3F /* Paywall_B_3.swift in Sources */,
@@ -572,6 +584,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3F7378192B1ECEEF006F9108 /* XCRemoteSwiftPackageReference "DynamicColor" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/yannickl/DynamicColor.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3F73781A2B1ECEEF006F9108 /* DynamicColor */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3F7378192B1ECEEF006F9108 /* XCRemoteSwiftPackageReference "DynamicColor" */;
+			productName = DynamicColor;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3FB178642ADFB7F3002F1A38 /* Project object */;
 }

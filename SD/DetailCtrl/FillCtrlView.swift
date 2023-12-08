@@ -21,7 +21,7 @@ struct FillCtrlView: View {
             Toggle("Fill", isOn: $dm.isFill.animation())
             if dm.isFill {
 //                ColorPicker("Color", selection: $dm.topicColor, supportsOpacity: true)
-                
+
                 RadiusPickerView(dm: dm)
                 GridRow {
                     Text("Topic Radius")
@@ -36,7 +36,13 @@ struct FillCtrlView: View {
                     TextField("", value: $dm.topicRadius, formatter: numberFormatter)
                         .customInput()
                 }
-                
+                Toggle(isOn: $dm.isFilledHeight.animation(.bouncy(extraBounce: -0.1))) {
+                    Text("Fill Container Height")
+                }
+                Toggle(isOn: $dm.isFilledWidth.animation(.bouncy(extraBounce: -0.1))) {
+                    Text("Fill Container Width")
+                }
+
 //                GridRow {
 //                    Text("Fill Opacity")
 //                        .gridColumnAlignment(.leading)

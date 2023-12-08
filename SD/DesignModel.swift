@@ -5,13 +5,24 @@
 //  Created by lan on 2023/10/18.
 //
 
+import DynamicColor
 import SwiftUI
 
 class designModel: ObservableObject {
+    // select
+    @Published var selectedTopicIndex: Int?
+
     // fill
     @Published var isFill: Bool = true
     @Published var topicRadius: Double = 8
-    @Published var topicColor: Color = Color(UIColor.systemGray6)
+    @Published var topicColor: Color = .init(UIColor.systemGray6)
+    @Published var mainTopicColor: Color = .init(UIColor.systemGray6)
+    @Published var subTopicColor: Color = .init(UIColor.systemGray6)
+    @Published var backgroundFillColor: Color = .init(.systemBackground)
+    @Published var mainDarkenMount: Double = 0
+    @Published var mainBrightMount: Double = 0
+    @Published var subDarkenMount: Double = 0
+    @Published var subBrightMount: Double = 0
     @Published var fillOpacity: Double = 1
     @Published var topicBrightness: Double = 0
     var selectRadiusIndex: RadiusOption = .medium {
@@ -54,7 +65,7 @@ class designModel: ObservableObject {
     @Published var branchStroke: Double = 2
     @Published var branchsRadius: Double = 3
     @Published var branchOpacity: Double = 1
-    @Published var branchColor: Color = Color(UIColor.label)
+    @Published var branchColor: Color = .init(UIColor.label)
 
     // font
     @Published var subFontSize: Double = 12
@@ -62,6 +73,9 @@ class designModel: ObservableObject {
     @Published var topicFontSize: Double = 12
     @Published var fontSizeFactor: Double = 2
     @Published var selectFontIndex: FontDesignOption = .sansSerif
+    @Published var centerTopicFontColor: Color = .init(UIColor.label)
+    @Published var subTopicFontColor: Color = .init(UIColor.label)
+    @Published var mainTopicFontColor: Color = .init(UIColor.label)
 
     // Topic Width & Height
     @Published var MainTopicHeight: CGFloat = 0.0
@@ -81,6 +95,12 @@ class designModel: ObservableObject {
     @Published var selectStyleIndex: Int = 0
     @Published var showBulletPoint: Bool = false
     @Published var isEditing = false
+
+    //
+    @Published var currentDesignOption: ColorBarOption = .option1
+    func updateDesign(colorScheme: ColorScheme) {
+        currentDesignOption.applyDesign(dm: self, colorScheme: colorScheme)
+    }
 
     func selectOption(_ option: styleSwitchView.Option) {
         switch option.type {
@@ -233,8 +253,15 @@ struct BulletPointView: View {
 
 struct MainTopicModifier: ViewModifier {
     @ObservedObject var dm = designModel()
+  
 
     func body(content: Content) -> some View {
+        let FillColor = Color(
+            DynamicColor(dm.mainTopicColor)
+                .darkened(amount: dm.mainDarkenMount)
+                .lighter(amount: dm.mainBrightMount)
+                .cgColor
+        )
         HStack {
             if dm.showBulletPoint {
                 BulletPointView(dm: dm)
@@ -245,6 +272,7 @@ struct MainTopicModifier: ViewModifier {
         .contentTransition(.numericText())
         .padding(dm.isPadding ? dm.topicPadding : 0)
         .padding(.horizontal, dm.topicHorPadding)
+        .foregroundStyle(dm.mainTopicFontColor)
         .frame(maxHeight: dm.isFilledHeight ? .infinity : .none)
         .frame(maxWidth: dm.isFilledWidth ? .infinity : .none, alignment: .leading)
         .if(dm.isBorder) {
@@ -257,8 +285,7 @@ struct MainTopicModifier: ViewModifier {
         .if(dm.isFill) {
             $0.background {
                 RoundedRectangle(cornerRadius: dm.topicRadius)
-                    .fill(dm.topicColor)
-//                    .opacity(dm.fillOpacity * 4)
+                    .fill(FillColor)
             }
         }
         .cornerRadius(dm.topicRadius)
@@ -273,6 +300,12 @@ struct SubTopicModifier: ViewModifier {
     @ObservedObject var dm = designModel()
 
     func body(content: Content) -> some View {
+        let FillColor = Color(
+            DynamicColor(dm.subTopicColor)
+                .darkened(amount: dm.subDarkenMount)
+                .lighter(amount: dm.subBrightMount)
+                .cgColor
+        )
         HStack {
             if dm.showBulletPoint {
                 BulletPointView(dm: dm)
@@ -283,6 +316,7 @@ struct SubTopicModifier: ViewModifier {
         .padding(dm.isPadding ? dm.topicPadding : 0)
         .padding(.horizontal, dm.topicHorPadding)
         .contentTransition(.numericText())
+        .foregroundStyle(dm.subTopicFontColor)
         .frame(maxHeight: dm.isFilledHeight ? .infinity : .none)
         .frame(maxWidth: dm.isFilledWidth ? .infinity : .none, alignment: .leading)
         .if(dm.isBorder) {
@@ -295,7 +329,7 @@ struct SubTopicModifier: ViewModifier {
         .if(dm.isFill) {
             $0.background {
                 RoundedRectangle(cornerRadius: dm.topicRadius)
-                    .fill(dm.topicColor)
+                    .fill(FillColor)
             }
         }
         .cornerRadius(dm.topicRadius)
@@ -317,6 +351,7 @@ struct CentralTopicModifier: ViewModifier {
         }
         .contentTransition(.numericText())
         .font(.system(size: dm.centralFontSize + dm.fontSizeFactor * 2))
+        .foregroundStyle(dm.centerTopicFontColor)
         .padding(dm.isPadding ? dm.topicPadding : 0)
         .padding(.horizontal, dm.topicHorPadding)
         .frame(maxHeight: dm.isFilledHeight ? .infinity : .none)

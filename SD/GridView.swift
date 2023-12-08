@@ -27,6 +27,20 @@ struct GridView: View {
                         Text("Main topic \(number2)")
                             .mainTopic(dm: dm)
                             .matchedGeometryEffect(id: "Main\(number2)", in: namespace)
+                            .overlay {
+                                RoundedRectangle(cornerRadius: dm.topicRadius + 4)
+                                    .opacity(0.01)
+                                    .padding(4)
+                                    .overlay{
+                                        RoundedRectangle(cornerRadius: dm.topicRadius)
+                                            .stroke(dm.selectedTopicIndex == number2 ? Color.blue : Color.clear, lineWidth: 2)
+                                    }
+                            }
+                            .onTapGesture {
+                                withAnimation {
+                                    dm.selectedTopicIndex = number2
+                                }
+                            }
                         if dm.isBranch {
                             secondaryBracketView(dm: dm)
                                 .matchedGeometryEffect(id: "branchCenter\(number2)", in: namespace)
@@ -42,6 +56,11 @@ struct GridView: View {
                         }
                     }
                 }
+            }
+        }
+        .onTapGesture {
+            withAnimation {
+                dm.selectedTopicIndex = nil
             }
         }
     }
