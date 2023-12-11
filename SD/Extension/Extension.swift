@@ -13,8 +13,23 @@ extension UIScreen {
     static let screenSize = UIScreen.main.bounds.size
 }
 
+extension DateFormatter {
+    static var timeFormatter: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HHmmss"
+        return formatter
+    }
+}
+
+//extension Color {
+//    static var background: Color { Color("background") }
+//    static var flipBackground: Color { Color("flip_background") }
+//    static var separator: Color { Color("separator") }
+//    static var textColor: Color { Color("text_color") }
+//}
+
 /// An extension to provide conversion to and from HSL (hue, saturation, lightness) colors.
-//extension UIColor {
+// extension UIColor {
 //    /// The HSL (hue, saturation, lightness) components of a color.
 //    struct HSL: Hashable {
 //        /// The hue component of the color, in the range [0, 360°].
@@ -60,7 +75,7 @@ extension UIScreen {
 //
 //        self.init(hue: h, saturation: s, brightness: b, alpha: alpha)
 //    }
-//}
+// }
 
 // extension View {
 //    func border(width: CGFloat, edges: [Edge], color: Color) -> some View {
@@ -94,7 +109,7 @@ extension View {
     }
 }
 
-//extension Color {
+// extension Color {
 //    init(hex: UInt, alpha: Double = 1) {
 //        self.init(
 //            .sRGB,
@@ -104,4 +119,4 @@ extension View {
 //            opacity: alpha
 //        )
 //    }
-//}
+// }

@@ -15,11 +15,12 @@ struct SDApp: App {
     var body: some Scene {
         WindowGroup {
             if isPhone{
-//                Paywall_Entry()
-                AiContentView()
+                Paywall_Entry()
+//                AiContentView()
             } else{
 //                ContentView()
-                AiContentView()
+                Paywall_Entry()
+//                AiContentView()
             }
         }
     }

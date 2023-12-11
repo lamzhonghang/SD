@@ -50,13 +50,28 @@ struct AiContentView: View {
                         .font(.subheadline)
                     }
                     ToolbarItemGroup(placement: .topBarTrailing) {
-                        Button {
-                            //
-                        } label: {
-                            Image(systemName: "square.and.arrow.up")
-                                .font(.subheadline)
-                                .bold()
+                        HStack(spacing: 12) {
+                            Button {
+                                //
+                            } label: {
+                                Image(systemName: "play.rectangle")
+                                    .font(.subheadline)
+                            }
+                            Button {
+                                //
+                            } label: {
+                                Image(systemName: "paintbrush")
+                                    .font(.subheadline)
+                            }
+                            Button {
+                                //
+                            } label: {
+                                Image(systemName: "square.and.arrow.up")
+                                    .font(.subheadline)
+                            }
                         }
+                        .tint(.black)
+                        .padding(.horizontal, 6)
                     }
                 }
         }
@@ -102,10 +117,28 @@ struct AiView: View {
                         .background(.indigo)
                         .cornerRadius(8)
                         .overlay(alignment: .trailing) {
-                            Rectangle()
-                                .frame(width: 80, height: 2)
-                                .offset(x: 80)
-                                .foregroundStyle(.indigo)
+                            HStack(spacing: 0) {
+                                Rectangle()
+                                    .frame(width: 56, height: 2)
+                                    .foregroundStyle(.indigo)
+                                Text("Are U?")
+                                    .padding()
+                                    .padding(.horizontal, 6)
+                                    .foregroundStyle(.white)
+                                    .background(.indigo)
+                                    .cornerRadius(8)
+                                    .overlay(alignment: .leading) {
+                                        if isSelect {
+                                            Button {
+                                                //
+                                            } label: {
+                                                minusButton()
+                                            }
+                                            .offset(x: -8)
+                                        }
+                                    }
+                            }
+                            .offset(x: 150)
                         }
                         .padding(3)
 
@@ -149,16 +182,7 @@ struct AiView: View {
                                 .offset(x: offsets)
                             }
                         }
-                        .overlay(alignment: .trailing) {
-                            if isSelect {
-                                Button {
-                                    //
-                                } label: {
-                                    minusButton()
-                                }
-                                .offset(x: offsets + 22)
-                            }
-                        }
+
                         .overlay {
                             RoundedRectangle(cornerRadius: 4)
                                 .stroke(Color.blue.opacity(0.3), lineWidth: 2.5)
@@ -218,11 +242,6 @@ struct AiView: View {
                 .font(.system(size: 8))
                 .bold()
         }
-        .background{
-            Circle()
-                .frame(width: 44)
-                .opacity(0.01)
-        }
     }
 
     @ViewBuilder
@@ -239,11 +258,11 @@ struct AiView: View {
                 .opacity(0.1)
             Image(systemName: "sparkles")
                 .foregroundStyle(.blue)
-                .font(.system(size: 11))
+                .font(.system(size: 10))
                 .bold()
         }
     }
-    
+
     @ViewBuilder
     func minusButton() -> some View {
         ZStack {

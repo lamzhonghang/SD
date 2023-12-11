@@ -49,8 +49,15 @@
 		3FB178802ADFBF0B002F1A38 /* DetailCtrlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB1787F2ADFBF0B002F1A38 /* DetailCtrlView.swift */; };
 		3FB178822ADFBF49002F1A38 /* DesignModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB178812ADFBF49002F1A38 /* DesignModel.swift */; };
 		3FB178842ADFC64A002F1A38 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB178832ADFC64A002F1A38 /* Extension.swift */; };
+		3FC152E42B2439CA002D3D1D /* ConfettiSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 3FC152E32B2439CA002D3D1D /* ConfettiSwiftUI */; };
 		3FCA94B02AF8792E007E9DF2 /* Paywall_BF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FCA94AF2AF8792E007E9DF2 /* Paywall_BF.swift */; };
 		3FCA94B22AF87A1D007E9DF2 /* BF_PopHor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FCA94B12AF87A1D007E9DF2 /* BF_PopHor.swift */; };
+		3FE360E42B2410540078987D /* FlipViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE360DD2B2410540078987D /* FlipViewModel.swift */; };
+		3FE360E52B2410540078987D /* ClockViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE360DE2B2410540078987D /* ClockViewModel.swift */; };
+		3FE360E62B2410540078987D /* FlipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE360E02B2410540078987D /* FlipView.swift */; };
+		3FE360E72B2410540078987D /* ClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE360E12B2410540078987D /* ClockView.swift */; };
+		3FE360E82B2410540078987D /* SingleFlipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE360E22B2410540078987D /* SingleFlipView.swift */; };
+		3FE360EC2B2410D30078987D /* Paywall_C_3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE360EB2B2410D30078987D /* Paywall_C_3.swift */; };
 		3FEAFCBF2AF0DAD800C9ED3F /* Paywall_B_3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEAFCBE2AF0DAD800C9ED3F /* Paywall_B_3.swift */; };
 		3FEAFCDF2AF1ECFA00C9ED3F /* Paywall_C_2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEAFCDE2AF1ECFA00C9ED3F /* Paywall_C_2.swift */; };
 		3FEF74D92B032BD700881D61 /* customSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEF74D82B032BD700881D61 /* customSegment.swift */; };
@@ -104,6 +111,12 @@
 		3FB178832ADFC64A002F1A38 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		3FCA94AF2AF8792E007E9DF2 /* Paywall_BF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paywall_BF.swift; sourceTree = "<group>"; };
 		3FCA94B12AF87A1D007E9DF2 /* BF_PopHor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BF_PopHor.swift; sourceTree = "<group>"; };
+		3FE360DD2B2410540078987D /* FlipViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlipViewModel.swift; sourceTree = "<group>"; };
+		3FE360DE2B2410540078987D /* ClockViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClockViewModel.swift; sourceTree = "<group>"; };
+		3FE360E02B2410540078987D /* FlipView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlipView.swift; sourceTree = "<group>"; };
+		3FE360E12B2410540078987D /* ClockView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClockView.swift; sourceTree = "<group>"; };
+		3FE360E22B2410540078987D /* SingleFlipView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleFlipView.swift; sourceTree = "<group>"; };
+		3FE360EB2B2410D30078987D /* Paywall_C_3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paywall_C_3.swift; sourceTree = "<group>"; };
 		3FEAFCBE2AF0DAD800C9ED3F /* Paywall_B_3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paywall_B_3.swift; sourceTree = "<group>"; };
 		3FEAFCDE2AF1ECFA00C9ED3F /* Paywall_C_2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paywall_C_2.swift; sourceTree = "<group>"; };
 		3FEF74D82B032BD700881D61 /* customSegment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = customSegment.swift; sourceTree = "<group>"; };
@@ -117,6 +130,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FC152E42B2439CA002D3D1D /* ConfettiSwiftUI in Frameworks */,
 				3F73781B2B1ECEEF006F9108 /* DynamicColor in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -147,6 +161,7 @@
 			children = (
 				3FA761902AE4E01D00AD6817 /* Paywall_C_1.swift */,
 				3FEAFCDE2AF1ECFA00C9ED3F /* Paywall_C_2.swift */,
+				3FE360EB2B2410D30078987D /* Paywall_C_3.swift */,
 				3FCA94AF2AF8792E007E9DF2 /* Paywall_BF.swift */,
 				3FCA94B12AF87A1D007E9DF2 /* BF_PopHor.swift */,
 				3F6563D42AF9E5DE0047DAA3 /* GlowingButtonView.swift */,
@@ -239,6 +254,7 @@
 				3F54D6D12AE798D10068B137 /* PurchaseFeedbackView.swift */,
 				3FF1B3832AE392CD00C88054 /* CoreMotion.swift */,
 				3FB178732ADFB7F4002F1A38 /* Assets.xcassets */,
+				3FE360EA2B24105B0078987D /* FlipClock */,
 				3FB178752ADFB7F4002F1A38 /* Preview Content */,
 			);
 			path = SD;
@@ -250,6 +266,34 @@
 				3FB178762ADFB7F4002F1A38 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		3FE360DC2B2410540078987D /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				3FE360DD2B2410540078987D /* FlipViewModel.swift */,
+				3FE360DE2B2410540078987D /* ClockViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		3FE360DF2B2410540078987D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3FE360E02B2410540078987D /* FlipView.swift */,
+				3FE360E12B2410540078987D /* ClockView.swift */,
+				3FE360E22B2410540078987D /* SingleFlipView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		3FE360EA2B24105B0078987D /* FlipClock */ = {
+			isa = PBXGroup;
+			children = (
+				3FE360DC2B2410540078987D /* ViewModels */,
+				3FE360DF2B2410540078987D /* Views */,
+			);
+			path = FlipClock;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -270,6 +314,7 @@
 			name = SD;
 			packageProductDependencies = (
 				3F73781A2B1ECEEF006F9108 /* DynamicColor */,
+				3FC152E32B2439CA002D3D1D /* ConfettiSwiftUI */,
 			);
 			productName = SD;
 			productReference = 3FB1786C2ADFB7F3002F1A38 /* SD.app */;
@@ -301,6 +346,7 @@
 			mainGroup = 3FB178632ADFB7F3002F1A38;
 			packageReferences = (
 				3F7378192B1ECEEF006F9108 /* XCRemoteSwiftPackageReference "DynamicColor" */,
+				3FC152E22B2439CA002D3D1D /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */,
 			);
 			productRefGroup = 3FB1786D2ADFB7F3002F1A38 /* Products */;
 			projectDirPath = "";
@@ -331,6 +377,7 @@
 				3F8EACA92AE7D487000E35F7 /* Paywall_boarding.swift in Sources */,
 				3FB178722ADFB7F3002F1A38 /* ContentView.swift in Sources */,
 				3FEF74D92B032BD700881D61 /* customSegment.swift in Sources */,
+				3FE360EC2B2410D30078987D /* Paywall_C_3.swift in Sources */,
 				3F07F78F2AEB85FD0090C8C0 /* GidtCardView.swift in Sources */,
 				3F449B2B2B17107300453C59 /* FillCtrlView.swift in Sources */,
 				3FA7618F2AE4E00A00AD6817 /* Paywall_A_2.swift in Sources */,
@@ -353,8 +400,10 @@
 				3FA761932AE60B6E00AD6817 /* Paywall_Entry.swift in Sources */,
 				3F5AC4A12AE0ECFE00B7B384 /* TreeView.swift in Sources */,
 				3FB178842ADFC64A002F1A38 /* Extension.swift in Sources */,
+				3FE360E62B2410540078987D /* FlipView.swift in Sources */,
 				3F34ED3A2AED33DE0042C810 /* BbannerView.swift in Sources */,
 				3FA761912AE4E01D00AD6817 /* Paywall_C_1.swift in Sources */,
+				3FE360E72B2410540078987D /* ClockView.swift in Sources */,
 				3F5AC4A32AE0ED2C00B7B384 /* BranchView.swift in Sources */,
 				3FB178802ADFBF0B002F1A38 /* DetailCtrlView.swift in Sources */,
 				3FB178702ADFB7F3002F1A38 /* SDApp.swift in Sources */,
@@ -365,13 +414,16 @@
 				3F34ED382AED2D2C0042C810 /* Paywall_B_2.swift in Sources */,
 				3F54D6D22AE798D10068B137 /* PurchaseFeedbackView.swift in Sources */,
 				3FEAFCDF2AF1ECFA00C9ED3F /* Paywall_C_2.swift in Sources */,
+				3FE360E42B2410540078987D /* FlipViewModel.swift in Sources */,
 				3F449B2D2B17182D00453C59 /* GetHeightExtension.swift in Sources */,
 				3F449B292B170F9E00453C59 /* LayoutPickerView.swift in Sources */,
 				3FF1B3802AE2434500C88054 /* RadialView.swift in Sources */,
+				3FE360E82B2410540078987D /* SingleFlipView.swift in Sources */,
 				3F3C01892AF8B52C00414ACE /* BFEntry.swift in Sources */,
 				3F7BF9882AEA9B2000ECF064 /* ComparePlanView.swift in Sources */,
 				3F07F78A2AEB6C730090C8C0 /* FAQ.swift in Sources */,
 				3F48CD932B186E250037D314 /* fontCtrlView.swift in Sources */,
+				3FE360E52B2410540078987D /* ClockViewModel.swift in Sources */,
 				3F5AC4A52AE0F37400B7B384 /* TimelineView.swift in Sources */,
 				3FF1B3842AE392CD00C88054 /* CoreMotion.swift in Sources */,
 				3F8EACAB2AE8BD6B000E35F7 /* Paywall_B_1.swift in Sources */,
@@ -594,6 +646,14 @@
 				minimumVersion = 5.0.1;
 			};
 		};
+		3FC152E22B2439CA002D3D1D /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:simibac/ConfettiSwiftUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -601,6 +661,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3F7378192B1ECEEF006F9108 /* XCRemoteSwiftPackageReference "DynamicColor" */;
 			productName = DynamicColor;
+		};
+		3FC152E32B2439CA002D3D1D /* ConfettiSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3FC152E22B2439CA002D3D1D /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */;
+			productName = ConfettiSwiftUI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

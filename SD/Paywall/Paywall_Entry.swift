@@ -43,6 +43,8 @@ struct Paywall_Entry: View {
     @State private var showB3 = false
     
     @State private var showC1 = false
+    @State private var showC2 = false
+    @State private var showC3 = true
     
     @State private var showCard = false
     
@@ -137,6 +139,16 @@ struct Paywall_Entry: View {
                     Text("不恶心版本的限时特价，通过比较打折后的月订阅价格，和限时一天的倒计时，和闪亮动感的cta。")
                 }
                 
+                Section{
+                    Button{
+                        showC3.toggle()
+                    }label: {
+                        Paywall_Button(title: "Paywall_C_3", subtitle: "Offer", text: "")
+                    }
+                } footer:{
+                    Text("天降大礼包")
+                }
+                
                 Button{
                     showBoarding.toggle()
                 }label: {
@@ -155,6 +167,9 @@ struct Paywall_Entry: View {
             })
             .sheet(isPresented: $showC1, content: {
                 Paywall_C_1()
+            })
+            .sheet(isPresented: $showC3, content: {
+                Paywall_C_3()
             })
             .sheet(isPresented: $showBoarding, content: {
                 Paywall_boarding()
