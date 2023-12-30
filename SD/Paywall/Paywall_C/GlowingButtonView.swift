@@ -35,17 +35,17 @@ struct GlowingButtonView: View {
                 .background(
                     RoundedRectangle(cornerRadius: 12, style: .continuous)
                         .fill(.red)
-                        .overlay{
-                            RoundedRectangle(cornerRadius: 12, style: .continuous)
-                                .stroke(
-                                    LinearGradient(gradient: Gradient(colors: [ .white.opacity(0.3), .white.opacity(0.1)]), startPoint: .topLeading, endPoint: .bottomTrailing),
-                                    lineWidth: 3
-                                )
-                        }
+//                        .overlay{
+//                            RoundedRectangle(cornerRadius: 12, style: .continuous)
+//                                .stroke(
+//                                    LinearGradient(gradient: Gradient(colors: [ .white.opacity(0.3), .white.opacity(0.1)]), startPoint: .topLeading, endPoint: .bottomTrailing),
+//                                    lineWidth: 3
+//                                )
+//                        }
                         .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
                         .overlay{
                             LinearGradient(gradient: Gradient(colors: [ .clear,.white.opacity(0.3), .clear, .white.opacity(0.1), .clear]), startPoint: .topLeading, endPoint: .bottomTrailing)
-                                .offset(x:showGlow ? 300 : -300)
+                                .offset(x:showGlow ? 400 : -400)
                                 .padding(.horizontal)
                                 .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
                         }

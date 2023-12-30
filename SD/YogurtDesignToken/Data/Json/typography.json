@@ -1,0 +1,268 @@
+{
+    "Headline": {
+        "Headline Large": {
+            "$type": "typography",
+            "$value": {
+                "fontFamily": "NeverMind",
+                "fontSize": "34px",
+                "fontWeight": 700,
+                "letterSpacing": "1%",
+                "lineHeight": "40px",
+            }
+        },
+        "Headline Medium": {
+            "$type": "typography",
+            "$value": {
+                "fontFamily": "NeverMind SemiCondensed",
+                "fontSize": "24px",
+                "fontWeight": 700,
+                "letterSpacing": "1%",
+                "lineHeight": "28px",
+            }
+        }
+    },
+    "Subhead": {
+        "Subhead Large": {
+            "$type": "typography",
+            "$value": {
+                "fontFamily": "NeverMind SemiCondensed",
+                "fontSize": "21px",
+                "fontWeight": 700,
+                "letterSpacing": "1%",
+                "lineHeight": "27px",
+            }
+        },
+        "Subhead Medium": {
+            "$type": "typography",
+            "$value": {
+                "fontFamily": "NeverMind SemiCondensed",
+                "fontSize": "19px",
+                "fontWeight": 700,
+                "letterSpacing": "1%",
+                "lineHeight": "25px",
+            }
+        },
+        "Subhead Small": {
+            "$type": "typography",
+            "$value": {
+                "fontFamily": "NeverMind SemiCondensed",
+                "fontSize": "17px",
+                "fontWeight": 700,
+                "letterSpacing": "2%",
+                "lineHeight": "23px",
+            }
+        },
+        "Subhead Mini": {
+            "$type": "typography",
+            "$value": {
+                "fontFamily": "NeverMind SemiCondensed",
+                "fontSize": "15px",
+                "fontWeight": 700,
+                "letterSpacing": "2%",
+                "lineHeight": "21px",
+            }
+        }
+    },
+    "Body": {
+        "Body Large(Default)": {
+            "$type": "typography",
+            "$value": {
+                "fontFamily": "NeverMind SemiCondensed",
+                "fontSize": "17px",
+                "fontWeight": 400,
+                "letterSpacing": "4%",
+                "lineHeight": "21px",
+            }
+        },
+        "Body Medium": {
+            "$type": "typography",
+            "$value": {
+                "fontFamily": "NeverMind SemiCondensed",
+                "fontSize": "15px",
+                "fontWeight": 400,
+                "letterSpacing": "4%",
+                "lineHeight": "19px",
+            }
+        },
+        "Body Small": {
+            "$type": "typography",
+            "$value": {
+                "fontFamily": "NeverMind SemiCondensed",
+                "fontSize": "13px",
+                "fontWeight": 400,
+                "letterSpacing": "4%",
+                "lineHeight": "17px",
+            }
+        }
+    },
+    "Caption": {
+        "Header": {
+            "$type": "typography",
+            "$value": {
+                "fontFamily": "NeverMind SemiCondensed",
+                "fontSize": "13px",
+                "fontWeight": 400,
+                "letterSpacing": "4%",
+                "lineHeight": "17px",
+            }
+        },
+        "Footer": {
+            "$type": "typography",
+            "$value": {
+                "fontFamily": "NeverMind SemiCondensed",
+                "fontSize": "13px",
+                "fontWeight": 400,
+                "letterSpacing": "4%",
+                "lineHeight": "17px",
+            }
+        },
+        "Caption": {
+            "$type": "typography",
+            "$value": {
+                "fontFamily": "NeverMind SemiCondensed",
+                "fontSize": "12px",
+                "fontWeight": 400,
+                "letterSpacing": "4%",
+                "lineHeight": "16px",
+            }
+        },
+        "Caption Small": {
+            "$type": "typography",
+            "$value": {
+                "fontFamily": "NeverMind SemiCondensed",
+                "fontSize": "11px",
+                "fontWeight": 400,
+                "letterSpacing": "4%",
+                "lineHeight": "15px",
+            }
+        }
+    },
+    "Icon": {
+        "Body Small": {
+            "Mini": {
+                "$type": "typography",
+                "$value": {
+                    "fontFamily": "NeverMind Symbol",
+                    "fontSize": "13px",
+                    "fontWeight": 400,
+                    "letterSpacing": "0%",
+                    "lineHeight": "20px",
+                }
+            },
+            "Small": {
+                "$type": "typography",
+                "$value": {
+                    "fontFamily": "NeverMind Symbol",
+                    "fontSize": "13px",
+                    "fontWeight": 400,
+                    "letterSpacing": "0%",
+                    "lineHeight": "20px",
+                }
+            },
+            "Medium": {
+                "$type": "typography",
+                "$value": {
+                    "fontFamily": "NeverMind Symbol",
+                    "fontSize": "13px",
+                    "fontWeight": 500,
+                    "letterSpacing": "0%",
+                    "lineHeight": "20px",
+                }
+            },
+            "Large": {
+                "$type": "typography",
+                "$value": {
+                    "fontFamily": "NeverMind Symbol",
+                    "fontSize": "13px",
+                    "fontWeight": 400,
+                    "letterSpacing": "0%",
+                    "lineHeight": "20px",
+                }
+            }
+        },
+        "Body Medium": {
+            "Medium": {
+                "$type": "typography",
+                "$value": {
+                    "fontFamily": "NeverMind Symbol",
+                    "fontSize": "15px",
+                    "fontWeight": 500,
+                    "letterSpacing": "0%",
+                    "lineHeight": "24px",
+                }
+            },
+            "Small": {
+                "$type": "typography",
+                "$value": {
+                    "fontFamily": "NeverMind Symbol",
+                    "fontSize": "15px",
+                    "fontWeight": 400,
+                    "letterSpacing": "0%",
+                    "lineHeight": "24px",
+                }
+            },
+            "Mini": {
+                "$type": "typography",
+                "$value": {
+                    "fontFamily": "NeverMind Symbol",
+                    "fontSize": "15px",
+                    "fontWeight": 400,
+                    "letterSpacing": "0%",
+                    "lineHeight": "24px",
+                }
+            },
+            "Large": {
+                "$type": "typography",
+                "$value": {
+                    "fontFamily": "NeverMind Symbol",
+                    "fontSize": "15px",
+                    "fontWeight": 400,
+                    "letterSpacing": "0%",
+                    "lineHeight": "24px",
+                }
+            }
+        },
+        "Body Large": {
+            "Small": {
+                "$type": "typography",
+                "$value": {
+                    "fontFamily": "NeverMind Symbol",
+                    "fontSize": "17px",
+                    "fontWeight": 400,
+                    "letterSpacing": "0%",
+                    "lineHeight": "24px",
+                }
+            },
+            "Mini": {
+                "$type": "typography",
+                "$value": {
+                    "fontFamily": "NeverMind Symbol",
+                    "fontSize": "17px",
+                    "fontWeight": 400,
+                    "letterSpacing": "0%",
+                    "lineHeight": "24px",
+                }
+            },
+            "Medium(Default)": {
+                "$type": "typography",
+                "$value": {
+                    "fontFamily": "NeverMind Symbol",
+                    "fontSize": "17px",
+                    "fontWeight": 500,
+                    "letterSpacing": "0%",
+                    "lineHeight": "24px",
+                }
+            },
+            "Large": {
+                "$type": "typography",
+                "$value": {
+                    "fontFamily": "NeverMind Symbol",
+                    "fontSize": "17px",
+                    "fontWeight": 400,
+                    "letterSpacing": "0%",
+                    "lineHeight": "24px",
+                }
+            }
+        }
+    }
+}

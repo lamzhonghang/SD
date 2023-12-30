@@ -10,122 +10,56 @@ import SwiftUI
 
 struct Paywall_C_3: View {
     @State private var timeRemaining = 24 * 60 * 60
-    @Environment(\.dismiss) private var dismiss
     @State private var isHighlight = false
-    @State private var showTitle = false
+    @State private var showGift = false
     @State private var showGlow = false
     @State private var counter: Int = 0
+    @Environment(\.verticalSizeClass) private var verSizeClass
+    var phoneIsLandscape: Bool {
+        verSizeClass == .regular
+    }
 
     var body: some View {
         NavigationStack {
-            ScrollView(showsIndicators: false) {
-                VStack {
-                    Button {
-                        counter += 1
-                    } label: {
-                        if showTitle {
-                            Image(systemName: "gift")
-                                .font(.system(size: 37))
-                                .foregroundStyle(Color.accentColor)
-                                .transition(.scale(0.5).combined(with: .opacity))
+            ZStack {
+                BGView()
+                ScrollView(showsIndicators: false) {
+                    if phoneIsLandscape {
+                        VStack(spacing: 0) {
+                            TitleAreaView()
+                            CountDownAndIconView()
+                            Spacer()
                         }
-                    }
-                    .frame(height: 60)
-                    .confettiCannon(counter: $counter, num: 50, openingAngle: Angle(degrees: 0), closingAngle: Angle(degrees: 360), radius: 200, repetitions: 1, repetitionInterval: 0.7)
-
-                    Text("Up to 30% Off")
-                        .foregroundStyle(Color.accentColor)
-                        .font(.title2.bold())
-
-                    HStack {
-                        TimeUnitView(timeValue: hoursString(from: timeRemaining), timeUnit: "HOUR")
-                        TwoDotView()
-                        TimeUnitView(timeValue: minutesString(from: timeRemaining), timeUnit: "MIN")
-                        TwoDotView()
-                        TimeUnitView(timeValue: secondsString(from: timeRemaining), timeUnit: "SEC")
-                    }
-                    subscribeView()
+                        .padding(.top, 48)
                         .padding()
-                        .frame(maxWidth: 380)
-                }
-            }
-            .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button {
-                        dismiss()
-                    } label: {
-                        Image(systemName: "xmark.circle.fill")
-                            .imageScale(.large)
-                            .font(.title3)
-                            .symbolRenderingMode(.hierarchical)
-                            .foregroundColor(.secondary)
-                    }
-                }
-            }
-            .toolbarBackground(.hidden, for: .navigationBar)
-            .safeAreaInset(edge: .bottom) {
-                VStack(spacing: 8) {
-                    Button {
-                        //
-                    } label: {
-                        Text("Continue")
-                            .frame(maxWidth: .infinity)
-                            .tint(.white)
-                            .padding()
-                            .background(
-                                Color.accentColor
-                            )
-                            .fontWeight(.semibold)
-                            .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
-                            .padding(.horizontal)
-                            .shadow(color: .red.opacity(0.1), radius: 12, x: 8, y: 8)
-                            .overlay {
-                                RoundedRectangle(cornerRadius: 14)
-                                    .strokeBorder(
-                                        LinearGradient(gradient: Gradient(colors: [.white.opacity(0.4), .white.opacity(0.1)]), startPoint: .topLeading, endPoint: .bottomTrailing),
-                                        lineWidth: 1.5
-                                    )
-                                    .padding(.horizontal)
-                            }
-                            .scaleEffect(isHighlight ? 1.01 : 1)
-                    }
-                    .overlay {
-                        GeometryReader { geometry in
-                            LinearGradient(gradient: Gradient(colors: [.clear, .clear, .white.opacity(0.3), .clear, .clear, .white.opacity(0.1), .clear]), startPoint: .topLeading, endPoint: .bottomTrailing)
-                                .offset(x: showGlow ? -geometry.size.width : geometry.size.width)
-                                .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+                        .frame(maxWidth: .infinity)
+                    } else {
+                        HStack(spacing: 32) {
+                            TitleAreaView()
+                            CountDownAndIconView()
                         }
-                        .padding(.horizontal)
+                        .padding()
+                        .padding(.vertical)
                     }
                 }
-                .frame(maxWidth: 380)
-                .frame(maxWidth: .infinity)
-                .padding(.vertical)
-                .background(.ultraThinMaterial)
+                .safeAreaInset(edge: .bottom, content: {
+                    CTAAreaView()
+                })
             }
-            .preferredColorScheme(.dark)
         }
+        .overlay(alignment: .top) {
+            xmarkBarView()
+        }
+        .preferredColorScheme(.dark)
         .onAppear {
             startTimer()
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                withAnimation(.spring(dampingFraction: 0.6)) {
-                    showTitle.toggle()
-                }
-            }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                withAnimation(Animation.easeInOut(duration: 1.8).repeatForever(autoreverses: false)) {
-                    showGlow.toggle()
-                }
-            }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
                 withAnimation {
-                    counter += 1
+                    showGift.toggle()
                 }
             }
-            Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { _ in
-                withAnimation(Animation.bouncy()) {
-                    isHighlight.toggle()
-                }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+                counter += 1
             }
         }
     }
@@ -157,71 +91,169 @@ struct Paywall_C_3: View {
         let seconds = seconds % 60
         return String(format: "%02d", seconds)
     }
-}
 
-struct bannerView: View {
-    var body: some View {
-        Image(systemName: "gift")
+    @ViewBuilder
+    func TitleAreaView() -> some View {
+        let gradient = LinearGradient(colors: [.black, .black.opacity(0.5)], startPoint: .top, endPoint: .bottom)
+        VStack(spacing: 4) {
+            if showGift {
+                Button {
+                    counter += 1
+                } label: {
+                    Image(systemName: "gift")
+                        .font(.title)
+                        .padding(.vertical, 12)
+                        .foregroundColor(.white)
+                        .mask {
+                            gradient
+                        }
+                }
+                .transition(.scale(scale: 0.2).combined(with: .opacity))
+                .confettiCannon(counter: $counter, num: 100, openingAngle: Angle(degrees: 20), closingAngle: Angle(degrees: 360), radius: 200)
+            }
+            Text("Limited Time Exclusive Offer")
+                .font(.body)
+                .mask {
+                    gradient
+                }
+            Text("Up to 30% Off")
+                .font(.largeTitle.bold())
+                .mask {
+                    gradient
+                }
+        }
+        .opacity(0.9)
+    }
+
+    @ViewBuilder
+    func CountDownAndIconView() -> some View {
+        VStack {
+            HStack(spacing: 12) {
+                TimeUnitView(timeValue: hoursString(from: timeRemaining))
+                TwoDotView()
+                TimeUnitView(timeValue: minutesString(from: timeRemaining))
+                TwoDotView()
+                TimeUnitView(timeValue: secondsString(from: timeRemaining))
+            }
+            .padding(.top, 16)
+            HStack(alignment: .bottom, spacing: 12) {
+                Image("17_anniversary_icon")
+                    .resizable()
+                    .scaledToFit()
+                Image("appstore_today_icon")
+                    .resizable()
+                    .scaledToFit()
+                Image("100_downloads_icon")
+                    .resizable()
+                    .scaledToFit()
+            }
+            .padding(8)
+            .padding(.vertical, phoneIsLandscape ? 16 : 0)
+            .opacity(0.4)
+            .frame(maxWidth: 380)
+        }
     }
 }
 
-struct subscribeView: View {
+struct BGView: View {
+    @State private var animation = false
     var body: some View {
-        VStack(alignment: .center, spacing: 0) {
-            HStack(alignment: .firstTextBaseline, spacing: 8) {
-                Text("$19.99")
-                    .font(.title)
-                    .bold()
-                Text("/ year")
-                    .font(.body)
+        Color(hex: 0x050320)
+            .ignoresSafeArea(.all)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .overlay {
+                GradientColorView()
             }
-            Text("$59.99")
-                .font(.title3)
-                .foregroundColor(.secondary)
-                .strikethrough()
-                .bold()
+            .overlay {
+                Image("noise")
+                    .resizable()
+                    .scaledToFill()
+                    .blendMode(.multiply)
+                    .scaleEffect(1.15)
+                    .opacity(0.7)
+            }
+            .onAppear {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                    withAnimation(Animation.timingCurve(0.7, 0, 0.25, 1, duration: 8).repeatForever(autoreverses: true)) {
+                        animation.toggle()
+                    }
+                }
+            }
+    }
+
+    @ViewBuilder
+    func GradientColorView() -> some View {
+        ZStack {
+            // Blue
+            Ellipse()
+                .frame(width: animation ? 100 : 174, height: animation ? 458 : 538)
+                .foregroundColor(Color(hex: 0x6C69FF))
+                .offset(x: animation ? 0 : -100)
+                .offset(y: animation ? 100 : 200)
+            // Red
+            Ellipse()
+                .frame(width: animation ? 130 : 230, height: 268)
+                .foregroundColor(Color(hex: 0xFF3737))
+                .offset(x: animation ? 200 : 0)
+                .offset(y: animation ? 100 : 0)
+            // Green
+            Ellipse()
+                .frame(width: animation ? 100 : 174, height: 268)
+                .offset(y: -100)
+                .offset(x: animation ? 100 : 150)
+                .opacity(animation ? 0.8 : 0.5)
+                .foregroundColor(Color(hex: 0x76FF84))
         }
-        .padding(32)
-        .frame(maxWidth: .infinity)
-        .background(Color(UIColor.quaternarySystemFill))
-        .cornerRadius(20)
-        .overlay {
-            RoundedRectangle(cornerRadius: 20)
-                .stroke(Color.accentColor, lineWidth: 3)
-        }
-        .overlay(alignment: .top) {
-            Text("Limited Time Exclusive Offer")
-                .foregroundColor(.white)
-                .padding(8)
-                .padding(.horizontal, 8)
-                .font(.subheadline)
-                .bold()
-                .frame(height: 32)
-                .background(Capsule().fill(Color.accentColor))
-                .offset(y: -16)
+        .blur(radius: 100)
+        .scaleEffect(animation ? 1.8 : 1.3)
+        .offset(y: -100)
+        .offset(x: animation ? -20 : 0)
+    }
+}
+
+struct xmarkBarView: View {
+    @Environment(\.dismiss) private var dismiss
+
+    var body: some View {
+        HStack {
+            Spacer()
+            Button {
+                dismiss()
+            } label: {
+                Image(systemName: "xmark.circle.fill")
+                    .imageScale(.large)
+                    .font(.title3)
+                    .symbolRenderingMode(.hierarchical)
+                    .foregroundColor(.secondary)
+            }
+            .padding()
         }
     }
 }
 
 struct TimeUnitView: View {
     var timeValue: String
-    var timeUnit: String
+    @Environment(\.verticalSizeClass) private var verSizeClass
+    var phoneIsLandscape: Bool {
+        verSizeClass == .regular
+    }
 
     var body: some View {
         VStack {
             Text(timeValue)
-                .font(.system(size: 56))
+                .font(.system(size: phoneIsLandscape ? 44 : 24))
                 .contentTransition(.numericText())
-                .monospacedDigit()
-                .fontDesign(.rounded)
-                .fontWeight(.heavy)
-            Text(timeUnit)
-                .font(.subheadline)
-                .bold()
-                .foregroundStyle(.tertiary)
+                .fontDesign(.monospaced)
+                .fontWeight(.bold)
+                .opacity(0.9)
+                .mask {
+                    LinearGradient(colors: [.black, .black.opacity(0.5)], startPoint: .top, endPoint: .bottom)
+                }
         }
-        .padding(4)
-        .background(Color(UIColor.systemGray6))
+        .padding()
+        .padding(.vertical, 8)
+        .background(.black.opacity(0.2))
+        .cornerRadius(12)
     }
 }
 
@@ -230,10 +262,90 @@ struct TwoDotView: View {
         VStack(spacing: 8) {
             Circle()
                 .frame(width: 8)
+                .background(.ultraThinMaterial)
             Circle()
                 .frame(width: 8)
+                .background(.ultraThinMaterial)
         }
-        .padding(.vertical, 24)
+    }
+}
+
+struct CTAAreaView: View {
+    @Environment(\.verticalSizeClass) private var verSizeClass
+    var phoneIsLandscape: Bool {
+        verSizeClass == .regular
+    }
+
+    var body: some View {
+        VStack(spacing: 0) {
+            ZStack {
+                if phoneIsLandscape {
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text("First Year Only $41.99")
+                            .font(.title3.bold())
+                        Text("Then,")
+                            .foregroundStyle(.secondary)
+                            +
+                            Text(" $59.99/year ")
+                            .foregroundStyle(.white)
+                            +
+                            Text("subscription can be cancelled on App Store anytime.")
+                            .foregroundStyle(.secondary)
+                    }
+                    .font(.subheadline)
+                } else {
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text("First Year Only $41.99, ")
+                            .foregroundStyle(.white)
+                            +
+                            Text("and then $59.99/year subscription can be cancelled on App Store anytime.")
+                    }
+                    .foregroundStyle(.secondary)
+                    .font(.footnote)
+                }
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.vertical)
+            Button {
+                //
+            } label: {
+                Text("Continue")
+                    .frame(maxWidth: .infinity)
+                    .tint(.black)
+                    .padding()
+                    .background(
+                        Color.white
+                    )
+                    .fontWeight(.semibold)
+                    .cornerRadius(12)
+                    .compositingGroup()
+                    .shadow(radius: 30)
+            }
+            if phoneIsLandscape {
+                HStack {
+                    Button {
+                        //
+                    } label: {
+                        Text("Terms & Policy")
+                    }
+                    Spacer()
+                    Button {
+                        //
+                    } label: {
+                        Text("Restore")
+                    }
+                }
+                .font(.subheadline)
+                .padding(.vertical, 12)
+                .foregroundColor(.white.opacity(0.5))
+            }
+        }
+        .padding(.horizontal)
+        .frame(maxWidth: 380)
+        .frame(maxWidth: .infinity)
+        .background(.ultraThinMaterial)
+        .compositingGroup()
+        .shadow(radius: 30)
     }
 }
 

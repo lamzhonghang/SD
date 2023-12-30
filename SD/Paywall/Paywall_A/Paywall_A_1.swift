@@ -263,6 +263,33 @@ struct awardAppView: View{
     }
 }
 
+struct DownloadsView: View{
+    var body: some View{
+        HStack{
+            Image("wheat_left")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 24)
+            VStack(spacing: 4){
+                Image("global_earth")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: 24)
+                Text("App Store")
+                    .font(.system(size: 13))
+                    .fontWeight(.black)
+                Text("App of the Day")
+                    .font(.system(size: 11))
+            }
+            Image("wheat_right")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 24)
+        }
+        .foregroundColor(.primary.opacity(0.9))
+    }
+}
+
 struct award100View: View{
     var body: some View{
         HStack{

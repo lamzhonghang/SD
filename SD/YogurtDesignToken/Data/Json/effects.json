@@ -1,0 +1,141 @@
+{
+    "elevation-l4": {
+      "$type": "effect",
+      "$description": "Popover",
+      "$value": [
+        {
+          "offsetX": 0,
+          "offsetY": 4,
+          "blur": 32,
+          "spread": 0,
+          "color": "#0000001a"
+        },
+        {
+          "offsetX": 0,
+          "offsetY": 8,
+          "blur": 100,
+          "spread": 0,
+          "color": "#00000040"
+        },
+        {
+          "offsetX": 0,
+          "offsetY": 0,
+          "blur": 3,
+          "spread": 0,
+          "color": "#ffffff1a",
+          "inset": true
+        }
+      ]
+    },
+    "elevation-l3": {
+      "$type": "effect",
+      "$description": "Menu",
+      "$value": [
+        {
+          "offsetX": 0,
+          "offsetY": 0,
+          "blur": 3,
+          "spread": 0,
+          "color": "#0000001a"
+        },
+        {
+          "offsetX": 0,
+          "offsetY": 6,
+          "blur": 32,
+          "spread": 0,
+          "color": "#00000033"
+        }
+      ]
+    },
+    "elevation-l2": {
+      "$type": "effect",
+      "$description": "Toolbar/Small Floating elements",
+      "$value": [
+        {
+          "offsetX": 0,
+          "offsetY": 2.4,
+          "blur": 24,
+          "spread": 0,
+          "color": "#00000026"
+        },
+        {
+          "offsetX": 0,
+          "offsetY": 0,
+          "blur": 3,
+          "spread": 0,
+          "color": "#0000001a"
+        }
+      ]
+    },
+    "elevation-l1": {
+      "$type": "effect",
+      "$description": "Btn",
+      "$value": [
+        {
+          "offsetX": 0,
+          "offsetY": 0,
+          "blur": 1.8,
+          "spread": 0,
+          "color": "#00000014"
+        },
+        {
+          "offsetX": 0,
+          "offsetY": 1,
+          "blur": 4,
+          "spread": 0,
+          "color": "#0000001a"
+        }
+      ]
+    },
+    "elevation-g": {
+      "$type": "effect",
+      "$description": "Panel Natural effect",
+      "$value": [
+        {
+          "offsetX": 0.5,
+          "offsetY": 0.7,
+          "blur": 0,
+          "spread": 0,
+          "color": "#ffffff",
+          "inset": true
+        },
+        {
+          "offsetX": 0,
+          "offsetY": 0,
+          "blur": 1.5,
+          "spread": 0,
+          "color": "#0000000f"
+        },
+        {
+          "offsetX": 0,
+          "offsetY": 0,
+          "blur": 3,
+          "spread": 0,
+          "color": "#00000008"
+        }
+      ]
+    },
+    "elevation-b1": {
+      "$type": "effect",
+      "$description": "CheckBox",
+      "$value": [
+        {
+          "offsetX": 0,
+          "offsetY": 0,
+          "blur": 1,
+          "spread": 0,
+          "color": "#00000033",
+          "inset": true
+        },
+        {
+          "offsetX": 0,
+          "offsetY": 0.5,
+          "blur": 2,
+          "spread": 0,
+          "color": "#0000001a",
+          "inset": true
+        }
+      ]
+    }
+  
+}

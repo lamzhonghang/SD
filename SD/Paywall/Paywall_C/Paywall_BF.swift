@@ -7,9 +7,9 @@
 
 import SwiftUI
 
+
 struct Paywall_BF: View {
     @State private var showPopUp = false
-    
     var body: some View {
         ZStack{
             HStack{

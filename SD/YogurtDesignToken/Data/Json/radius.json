@@ -1,0 +1,40 @@
+{
+  "xs-4": {
+    "$type": "radius",
+    "$value": 4,
+    "$description": "SearchBox/Hit area/Select/Segment"
+  },
+  "s-8": {
+    "$type": "radius",
+    "$value": 8
+  },
+  "m-12": {
+    "$type": "radius",
+    "$value": 12
+  },
+  "l-16": {
+    "$type": "radius",
+    "$value": 16
+  },
+  "xl-24": {
+    "$type": "radius",
+    "$value": 24
+  },
+  "xxl-36": {
+    "$type": "radius",
+    "$value": 36
+  },
+  "xxxl-48": {
+    "$type": "radius",
+    "$value": 48
+  },
+  "infinite-300": {
+    "$type": "radius",
+    "$value": 300
+  },
+  "xxs-3": {
+    "$type": "radius",
+    "$value": 3,
+    "$description": "Only for CheckBox"
+  }
+}

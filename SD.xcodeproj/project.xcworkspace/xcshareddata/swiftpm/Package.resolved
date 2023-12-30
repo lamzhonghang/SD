@@ -17,6 +17,15 @@
         "revision" : "d9beca13ca85baa50ee29832d0db5129fba69630",
         "version" : "5.0.1"
       }
+    },
+    {
+      "identity" : "nevermindsymbols",
+      "kind" : "remoteSourceControl",
+      "location" : "https://gitlab.xmind.cn/kamice/nevermindsymbols",
+      "state" : {
+        "revision" : "4d9ff268956fae272796a5183c3dc256a43a4a48",
+        "version" : "0.0.2"
+      }
     }
   ],
   "version" : 2

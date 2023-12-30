@@ -1,0 +1,144 @@
+{
+  "size": {
+    "7xl-56": {
+      "$type": "size",
+      "$value": 56
+    },
+    "8xl-64": {
+      "$type": "size",
+      "$value": 64
+    },
+    "6xl-48": {
+      "$type": "size",
+      "$value": 48
+    },
+    "5xl-40": {
+      "$type": "size",
+      "$value": 40
+    },
+    "4xl-36": {
+      "$type": "size",
+      "$value": 36
+    },
+    "3xl-32": {
+      "$type": "size",
+      "$value": 32
+    },
+    "xxl-24": {
+      "$type": "size",
+      "$value": 24
+    },
+    "xl-20": {
+      "$type": "size",
+      "$value": 20
+    },
+    "l-16": {
+      "$type": "size",
+      "$value": 16
+    },
+    "m-12": {
+      "$type": "size",
+      "$value": 12
+    },
+    "s-8": {
+      "$type": "size",
+      "$value": 8
+    },
+    "xs-4": {
+      "$type": "size",
+      "$value": 4
+    },
+    "none-0": {
+      "$type": "size",
+      "$value": 0
+    }
+  },
+  "padding": {
+    "6xl-48": {
+      "$type": "padding",
+      "$value": 48
+    },
+    "5xl-40": {
+      "$type": "padding",
+      "$value": 40
+    },
+    "4xl-36": {
+      "$type": "padding",
+      "$value": 36
+    },
+    "xs-4": {
+      "$type": "padding",
+      "$value": 4
+    },
+    "s-8": {
+      "$type": "padding",
+      "$value": 8
+    },
+    "m-12": {
+      "$type": "padding",
+      "$value": 12
+    },
+    "l-16": {
+      "$type": "padding",
+      "$value": 16
+    },
+    "xl-20": {
+      "$type": "padding",
+      "$value": 20
+    },
+    "xxl-24": {
+      "$type": "padding",
+      "$value": 24
+    },
+    "3xl-32": {
+      "$type": "padding",
+      "$value": 32
+    },
+    "none-0": {
+      "$type": "padding",
+      "$value": 0
+    }
+  },
+  "margin": {
+    "margin-xxs-4": {
+      "$type": "margin",
+      "$value": 4
+    },
+    "bottom": {
+      "$type": "margin",
+      "$value": 48
+    },
+    "margin-l-24": {
+      "$type": "margin",
+      "$value": 24
+    },
+    "margin-xl-32": {
+      "$type": "margin",
+      "$value": 32
+    },
+    "margin-xxl-40": {
+      "$type": "margin",
+      "$value": 40
+    },
+    "margin-m-16": {
+      "$type": "margin",
+      "$value": 16
+    },
+    "margin-s-12": {
+      "$type": "margin",
+      "$value": 12
+    },
+    "margin-xs-8": {
+      "$type": "margin",
+      "$value": 8
+    },
+    "margin-xxxl-48": {
+      "$type": "margin",
+      "$value": 48
+    },
+    "margin-none-0": {
+      "$type": "margin",
+      "$value": 0
+    }
+  }
+}
