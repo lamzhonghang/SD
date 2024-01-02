@@ -27,7 +27,7 @@ struct TokenContentView: View {
                 }
 
                 Section(header: Text("Component")) {
-                    ForEach([ItemType.Button, .Tab, .Animation], id: \.self) { item in
+                    ForEach([ItemType.Button, .Tab, .Toggle, .Animation], id: \.self) { item in
                         self.listItem(item)
                     }
                 }
@@ -86,6 +86,7 @@ enum ItemType: String, CaseIterable, Identifiable {
     case Symbol
     case Tab
     case Animation
+    case Toggle
 
     var id: String { self.rawValue }
 }
@@ -127,6 +128,8 @@ struct TokenDetailView: View {
             SpacingMarginView()
         case .Symbol:
             SymbolView()
+        case .Toggle:
+            ToggleView()
         }
     }
 }

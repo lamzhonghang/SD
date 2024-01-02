@@ -30,7 +30,6 @@ struct ButtonView: View {
                             .buttonStyle(GYButtonStyle(isLoading: isLoading))
 
                         Button("Button", action: {})
-                            .imageScale(.small)
                             .disabled(true)
                     }
                 }
@@ -56,6 +55,116 @@ struct ButtonView: View {
                 }
                 .imageScale(.small)
                 .buttonStyle(.GYDefault)
+
+                VStack {
+                    Text("Plain with padding")
+                        .modifier(TokenTitle())
+
+                    // label only
+                    HStack {
+                        Spacer()
+                        Button("Button", action: {})
+                            .buttonStyle(GYButtonLinkStyle(type: .labelOnly, styleType: .accent, isPadding: true))
+                        Button("Button", action: {})
+                            .buttonStyle(GYButtonLinkStyle(type: .labelOnly, styleType: .blue, isPadding: true))
+                        Button("Button", action: {})
+                            .buttonStyle(GYButtonLinkStyle(type: .labelOnly, styleType: .default, isPadding: true))
+                        Spacer()
+                    }
+
+                    // Icon only
+                    HStack {
+                        Spacer()
+                        Button("Button", action: {})
+                            .buttonStyle(GYButtonLinkStyle(type: .iconOnly(icon), styleType: .accent, isPadding: true))
+                        Button("Button", action: {})
+                            .buttonStyle(GYButtonLinkStyle(type: .iconOnly(icon), styleType: .blue, isPadding: true))
+                        Button("Button", action: {})
+                            .buttonStyle(GYButtonLinkStyle(type: .iconOnly(icon), styleType: .default, isPadding: true))
+                        Spacer()
+                    }
+
+                    // Lable Only Disable
+                    HStack {
+                        Spacer()
+                        Button("Button", action: {})
+                            .buttonStyle(GYButtonLinkStyle(type: .labelOnly, styleType: .accent, isPadding: true))
+                        Button("Button", action: {})
+                            .buttonStyle(GYButtonLinkStyle(type: .labelOnly, styleType: .blue, isPadding: true))
+                        Button("Button", action: {})
+                            .buttonStyle(GYButtonLinkStyle(type: .labelOnly, styleType: .default, isPadding: true))
+                        Spacer()
+                    }
+                    .disabled(true)
+
+                    // Icon only disable
+                    HStack {
+                        Spacer()
+                        Button("Button", action: {})
+                            .buttonStyle(GYButtonLinkStyle(type: .iconOnly(icon), styleType: .accent, isPadding: true))
+                        Button("Button", action: {})
+                            .buttonStyle(GYButtonLinkStyle(type: .iconOnly(icon), styleType: .blue, isPadding: true))
+                        Button("Button", action: {})
+                            .buttonStyle(GYButtonLinkStyle(type: .iconOnly(icon), styleType: .default, isPadding: true))
+                        Spacer()
+                    }
+                    .disabled(true)
+                }
+
+                VStack {
+                    Text("Plain without padding")
+                        .modifier(TokenTitle())
+
+                    // Label only
+                    HStack {
+                        Spacer()
+                        Button("Button", action: {})
+                            .buttonStyle(GYButtonLinkStyle(type: .labelOnly, styleType: .accent, isPadding: false))
+                        Button("Button", action: {})
+                            .buttonStyle(GYButtonLinkStyle(type: .labelOnly, styleType: .blue, isPadding: false))
+                        Button("Button", action: {})
+                            .buttonStyle(GYButtonLinkStyle(type: .labelOnly, styleType: .default, isPadding: false))
+                        Spacer()
+                    }
+
+                    // Icon only
+                    HStack {
+                        Spacer()
+                        Button("Button", action: {})
+                            .buttonStyle(GYButtonLinkStyle(type: .iconOnly(icon), styleType: .accent, isPadding: false))
+                        Button("Button", action: {})
+                            .buttonStyle(GYButtonLinkStyle(type: .iconOnly(icon), styleType: .blue, isPadding: false))
+                        Button("Button", action: {})
+                            .buttonStyle(GYButtonLinkStyle(type: .iconOnly(icon), styleType: .default, isPadding: false))
+                        Spacer()
+                    }
+
+                    // Label only disable
+                    HStack {
+                        Spacer()
+                        Button("Button", action: {})
+                            .buttonStyle(GYButtonLinkStyle(type: .labelOnly, styleType: .accent, isPadding: false))
+                        Button("Button", action: {})
+                            .buttonStyle(GYButtonLinkStyle(type: .labelOnly, styleType: .blue, isPadding: false))
+                        Button("Button", action: {})
+                            .buttonStyle(GYButtonLinkStyle(type: .labelOnly, styleType: .default, isPadding: false))
+                        Spacer()
+                    }
+                    .disabled(true)
+
+                    // Icon only disable
+                    HStack {
+                        Spacer()
+                        Button("Button", action: {})
+                            .buttonStyle(GYButtonLinkStyle(type: .iconOnly(icon), styleType: .accent, isPadding: false))
+                        Button("Button", action: {})
+                            .buttonStyle(GYButtonLinkStyle(type: .iconOnly(icon), styleType: .blue, isPadding: false))
+                        Button("Button", action: {})
+                            .buttonStyle(GYButtonLinkStyle(type: .iconOnly(icon), styleType: .default, isPadding: false))
+                        Spacer()
+                    }
+                    .disabled(true)
+                }
             }
             .padding()
         }

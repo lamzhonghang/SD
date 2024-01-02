@@ -52,6 +52,11 @@ enum GYUIColors {
                              dark: GYColors.base.white)
             }
 
+            static var hover: Color {
+                return Color(light: GYColors.base.white,
+                             dark: GYColors.base.white)
+            }
+
             static var pressed: Color {
                 return Color(light: GYColors.base.white,
                              dark: GYColors.base.white)
@@ -63,7 +68,25 @@ enum GYUIColors {
             }
         }
 
-        static var accent = GYUIColors.accent
+        enum blue {
+            static var normal = GYColors.base.blue
+            static var hover = GYColors.blue.blue400
+            static var pressed = GYColors.blue.blue600
+            static var disable: Color {
+                return Color(light: GYColors.blue.blue100,
+                             dark: GYColors.blue.blue900)
+            }
+        }
+
+        enum accent {
+            static var normal = GYUIColors.accent
+            static var hover = GYColors.xRed.xRed400
+            static var pressed = GYColors.xRed.xRed600
+            static var disable: Color {
+                return Color(light: GYColors.xRed.xRed50,
+                             dark: GYColors.xRed.xRed900)
+            }
+        }
     }
 
     // icon
@@ -80,7 +103,12 @@ enum GYUIColors {
             static var disable = GYUIColors.label.onColor.disable
         }
 
-        static var accent = GYUIColors.label.accent
+        enum accent {
+            static var normal = GYUIColors.label.accent.normal
+            static var hover = GYUIColors.label.accent.hover
+            static var pressed = GYUIColors.label.accent.pressed
+            static var disable = GYUIColors.label.accent.disable
+        }
     }
 
     // border
@@ -201,7 +229,7 @@ enum GYUIColors {
         }
 
         static var overlayDeep: Color {
-            return Color(light: Color(hex: "#1C2834").opacity(0.5),
+            return Color(light: Color(hex: "#1C2834").opacity(0.12),
                          dark: Color(hex: "#060A0E").opacity(0.3))
         }
 
@@ -285,6 +313,7 @@ enum GYUIColors {
     }
 }
 
+// Below content is for display only.
 struct ColorInfo: Hashable {
     var name: String
     var color: Color
@@ -297,7 +326,7 @@ extension GYUIColors.label {
         ColorInfo(name: "Tertiary", color: tertiary),
         ColorInfo(name: "Quaternary", color: quaternary),
         ColorInfo(name: "Disable", color: disable),
-        ColorInfo(name: "Accent", color: accent)
+        ColorInfo(name: "Accent", color: accent.normal)
     ]
     static let Inverts: [ColorInfo] = [ColorInfo(name: "Invert", color: invert)]
     static let labelonColor: [ColorInfo] = [

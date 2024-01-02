@@ -106,6 +106,8 @@
 		3F5AC4A12AE0ECFE00B7B384 /* TreeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5AC4A02AE0ECFE00B7B384 /* TreeView.swift */; };
 		3F5AC4A32AE0ED2C00B7B384 /* BranchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5AC4A22AE0ED2C00B7B384 /* BranchView.swift */; };
 		3F5AC4A52AE0F37400B7B384 /* TimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5AC4A42AE0F37400B7B384 /* TimelineView.swift */; };
+		3F6204112B43E763005BAE19 /* ToggleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6204102B43E763005BAE19 /* ToggleView.swift */; };
+		3F6204132B43E781005BAE19 /* GYToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6204122B43E781005BAE19 /* GYToggle.swift */; };
 		3F6563D52AF9E5DE0047DAA3 /* GlowingButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6563D42AF9E5DE0047DAA3 /* GlowingButtonView.swift */; };
 		3F6A39382B3EA7170051B8D5 /* GYAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6A39372B3EA7170051B8D5 /* GYAnimation.swift */; };
 		3F6A393A2B3EB4870051B8D5 /* AnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6A39392B3EB4870051B8D5 /* AnimationView.swift */; };
@@ -245,6 +247,8 @@
 		3F5AC4A02AE0ECFE00B7B384 /* TreeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeView.swift; sourceTree = "<group>"; };
 		3F5AC4A22AE0ED2C00B7B384 /* BranchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchView.swift; sourceTree = "<group>"; };
 		3F5AC4A42AE0F37400B7B384 /* TimelineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineView.swift; sourceTree = "<group>"; };
+		3F6204102B43E763005BAE19 /* ToggleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleView.swift; sourceTree = "<group>"; };
+		3F6204122B43E781005BAE19 /* GYToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GYToggle.swift; sourceTree = "<group>"; };
 		3F6563D42AF9E5DE0047DAA3 /* GlowingButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlowingButtonView.swift; sourceTree = "<group>"; };
 		3F6A39372B3EA7170051B8D5 /* GYAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GYAnimation.swift; sourceTree = "<group>"; };
 		3F6A39392B3EB4870051B8D5 /* AnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationView.swift; sourceTree = "<group>"; };
@@ -389,6 +393,7 @@
 			children = (
 				3FB611872B3D9C6300124075 /* Button */,
 				3FB611862B3D9C5D00124075 /* Tab */,
+				3F6204122B43E781005BAE19 /* GYToggle.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -538,6 +543,7 @@
 			children = (
 				3FB611852B3D972C00124075 /* Tab */,
 				3F5287AA2B3AF54C002B5DE1 /* ButtonView.swift */,
+				3F6204102B43E763005BAE19 /* ToggleView.swift */,
 				3F6A39392B3EB4870051B8D5 /* AnimationView.swift */,
 				3F6B532A2B3C080B0071A9B1 /* SymbolView.swift */,
 			);
@@ -814,6 +820,7 @@
 				3F1E3DED2AEE8E5000D3E860 /* MemberCard.swift in Sources */,
 				3FB611802B3D6A1200124075 /* GYTab.swift in Sources */,
 				3F5287F92B3AF54D002B5DE1 /* GYTabBarView.swift in Sources */,
+				3F6204112B43E763005BAE19 /* ToggleView.swift in Sources */,
 				3FB1787E2ADFBB1D002F1A38 /* DataModel.swift in Sources */,
 				3F5287F62B3AF54D002B5DE1 /* ColorFillView.swift in Sources */,
 				3FB178822ADFBF49002F1A38 /* DesignModel.swift in Sources */,
@@ -885,6 +892,7 @@
 				3FF1B3842AE392CD00C88054 /* CoreMotion.swift in Sources */,
 				3F8EACAB2AE8BD6B000E35F7 /* Paywall_B_1.swift in Sources */,
 				3F5287C62B3AF54D002B5DE1 /* loadJSON.swift in Sources */,
+				3F6204132B43E781005BAE19 /* GYToggle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

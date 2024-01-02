@@ -45,15 +45,15 @@ struct mainEntryView: View {
 //                selectedView = .token
 //            }
 //        }
-        .fullScreenCover(item: $selectedView) { entry in
-            switch entry {
-            case .snowDance:
-                SDContentView()
-            case .payWall:
-                Paywall_Entry()
-            case .token:
-                TokenContentView()
+            .fullScreenCover(item: $selectedView) { entry in
+                switch entry {
+                case .snowDance:
+                    SDContentView()
+                case .payWall:
+                    Paywall_Entry()
+                case .token:
+                    TokenContentView()
+                }
             }
-        }
     }
 }
